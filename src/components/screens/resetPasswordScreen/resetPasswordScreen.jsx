@@ -1,6 +1,6 @@
 import React from 'react'
 
-function LocationsScreen() {
+function ResetPasswordScreen() {
     return (
         <div>
             
@@ -8,4 +8,5 @@ function LocationsScreen() {
     )
 }
 
-export default LocationsScreen
+export default ResetPasswordScreen
+
