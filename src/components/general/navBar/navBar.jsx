@@ -5,34 +5,35 @@ import "./navBar.css";
 
 function NavBar() {
   return (
-    <div className="">
-      <div className="">
-        <div className="">
-          <div className="">
-            <a href="/alerts" className="">
-              <span>Alerts</span>
-            </a>
-            <br/>
-            <a href="/goals" className="">
-              <span>Goals</span>
-            </a>
-            <br/>
-            <a href="/homeMenu" className="">
-              <span>Home Menu</span>
-            </a>
-            <br/>
-            <a href="/locations" className="">
-              <span>Locations</span>
-            </a>
-            <br/>
+    <div className="mainWrapper">
+      <div className="mainWrapper_navbar">
+        <div className="navbar_button_container ">
+          <div className="navbar_bottom_links ">
+            <Link  to="/alertscreen">
+              <li className=""><span >Alerts</span></li>
+            </Link>
+            <br />
+            <Link to="/goalsscreen">
+              <li>goals</li>
+            </Link>
+            <br />
+            <Link to="/homeMenu">
+              <li>home Menu</li>
+            </Link>
+            <br />
+            <Link to="/locationsscreen">
+              <li>locations</li>
+            </Link>
+            <br />
           </div>
           <div className="navbar_bottom_links">
-            <a className="equals selectedNavbarItem " href="/changePassword">
-              <span>Change password</span>
-            </a>
-            <a className="logout_button" href="/logout">
-              <span>Logout</span>
-            </a>
+            <Link to="/changepassowrdscreen">
+              <li>changePassword</li>
+            </Link>
+            <br />
+            <Link to="/logout">
+              <li>logout</li>
+            </Link>
           </div>
         </div>
       </div>
