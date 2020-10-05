@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {useLocation} from "react-router-dom"
 
 import "./navBar.css";
 
+
+
 function NavBar() {
     
+  const {pathname} = useLocation()
 
 
   return (
@@ -13,26 +17,27 @@ function NavBar() {
         <div className="navbar_button_container ">
           <div className="navbar_bottom_links ">
           <img className="nav_icon" src="/img/img-logo.svg" alt="blood-donor" />
-            <Link  to="/alertscreen">
-              <li>Alerts</li>
+            <Link className={pathname ==="/alertscreen" ? "selected" :""} to="/alertscreen">
+              <li >Alerts</li>
             </Link>
             <br />
-            <Link to="/goalsscreen">
-              <li>goals</li>
+            <Link className={pathname ==="/goalsscreen" ? "selected" :""} to="/goalsscreen">
+              <li >goals</li>
             </Link>
             <br />
-            <Link to="/homeMenu">
-              <li>home Menu</li>
+            <Link className={pathname ==="/homeMenu" ? "selected" :""} to="/homeMenu">
+              <li >home Menu</li>
             </Link>
             <br />
-            <Link to="/locationsscreen">
-              <li>locations</li>
+            <Link className={pathname ==="/locationsscreen" ? "selected" :""} to="/locationsscreen">
+              <li >locations</li>
             </Link>
             <br />
           </div>
           <div className="navbar_bottom_links">
-            <Link to="/changepassowrdscreen">
-              <li>changePassword</li>
+
+            <Link className={pathname ==="/changepassowrdscreen" ? "selected" :""} to="/changepassowrdscreen">
+              <li >changePassword</li>
             </Link>
             <br />
             <Link className="logout_button" to="/logout">
