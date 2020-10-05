@@ -1,0 +1,10 @@
+fieldset {
+  background-color: #debac6;
+}
+legend {
+  text-align: center;
+}
+.bloodType-checkBox {
+  display: flex;
+  flex-direction: row;
+}
