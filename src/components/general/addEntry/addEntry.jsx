@@ -1,20 +1,22 @@
 import React from "react";
 import "./addEntry.css";
+import AlertEntryContainer from "../alertEntryContainer/index";
 
-const AddEntry = function () {
-  const [isAdd, setIsAdd] = React.useState(false);
+const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
+  // const [isAdd, setIsAdd] = React.useState(false);
 
   const handleAddClick = () => {
-    setIsAdd(true);
+    // setIsAdd(true);
+    if (onAddClick) onAddClick();
   };
 
   const handleCancelClick = () => {
-    setIsAdd(false);
+    if (onCancelClick) onCancelClick();
   };
   return (
     <div className="addEntry-container">
       Alerts
-      {!isAdd ? (
+      {isAdd ? (
         <button onClick={handleAddClick} className="addEntry-addBtn">
           add
         </button>
