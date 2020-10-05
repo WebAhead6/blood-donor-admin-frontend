@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import AddEntry from "../../general/addEntry";
+import "./alertScreen.css";
 
 function AlertScreen() {
-    return (
-        <div>
-            AlertScreen
-        </div>
-    )
+  return (
+    <div className="alertScreen">
+      <AddEntry />
+    </div>
+  );
 }
 
-export default AlertScreen
-
+export default AlertScreen;
