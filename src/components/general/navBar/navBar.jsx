@@ -4,13 +4,17 @@ import { Link } from "react-router-dom";
 import "./navBar.css";
 
 function NavBar() {
+    
+
+
   return (
     <div className="mainWrapper">
       <div className="mainWrapper_navbar">
         <div className="navbar_button_container ">
           <div className="navbar_bottom_links ">
+          <img className="nav_icon" src="/img/img-logo.svg" alt="blood-donor" />
             <Link  to="/alertscreen">
-              <li className=""><span >Alerts</span></li>
+              <li>Alerts</li>
             </Link>
             <br />
             <Link to="/goalsscreen">
@@ -31,7 +35,7 @@ function NavBar() {
               <li>changePassword</li>
             </Link>
             <br />
-            <Link to="/logout">
+            <Link className="logout_button" to="/logout">
               <li>logout</li>
             </Link>
           </div>
