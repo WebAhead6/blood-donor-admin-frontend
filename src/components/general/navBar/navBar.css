@@ -30,7 +30,8 @@
     width: 100%;
 }
 
-.navbar_top_links a {
+
+.navbar_top_links Link {
     color: white;
     display: flex;
     width: 100%;
@@ -59,8 +60,12 @@
     background-color: var(--color-transparent-gray);
     margin-bottom: 5px;
     text-decoration: none;
-}
+    list-style-type: none;
 
+}
+.nav_icon{
+margin: auto
+}
 
 
 .mainWrapper_navbar img {
@@ -78,4 +83,5 @@
 
 .logout_button {
     background-color: var(--color-drop-red) !important;
+    color: white;
 }
