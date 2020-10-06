@@ -1,11 +1,12 @@
 import React from "react";
 import postAdminData from "../../utlis/PostAdminData";
 import "./addEntry.css";
-import { newAlertTextAtom } from "../../../recoilsState";
+import { newAlertTextAtom, newAlertBloodTypeAtom } from "../../../recoilsState";
 import { useRecoilState } from "recoil";
 
 const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
   const [entryText, setEntryText] = useRecoilState(newAlertTextAtom);
+  const [bloodType, setBloodType] = useRecoilState(newAlertBloodTypeAtom);
 
   const handleAddClick = () => {
     if (onAddClick) onAddClick();
@@ -17,7 +18,7 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
 
   const handleSaveClick = () => {
     postAdminData("/alerts", {
-      bloodType: "",
+      bloodType: bloodType.value,
       title: {
         he: entryText[0].title,
         ar: entryText[1].title,

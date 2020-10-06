@@ -20,3 +20,14 @@ export const newAlertTextAtom = atom({
     },
   ],
 });
+
+export const newAlertBloodTypeAtom = atom({
+  key: "BloodTypeAlerts",
+  default: [
+    {
+      indeterminate: true,
+      checkAll: false,
+      value: [],
+    },
+  ],
+});

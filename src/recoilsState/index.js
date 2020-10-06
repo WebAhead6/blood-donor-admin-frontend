@@ -1,2 +1,2 @@
-import { newAlertTextAtom } from "./newAlerts";
-export { newAlertTextAtom };
+import { newAlertTextAtom, newAlertBloodTypeAtom } from "./newAlerts";
+export { newAlertTextAtom, newAlertBloodTypeAtom };
