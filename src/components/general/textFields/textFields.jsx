@@ -13,7 +13,7 @@ function TextFields({
       <fieldset>
         <legend>{legend}</legend>
 
-        <label for="title">title</label>
+        <label>title</label>
         <br />
         <input
           className="textFields-input"
@@ -23,7 +23,7 @@ function TextFields({
           onChange={onTitleChange}
         />
         <br />
-        <label for="sub-title">sub-title</label>
+        <label>sub-title</label>
         <br />
         <input
           className="textFields-input"

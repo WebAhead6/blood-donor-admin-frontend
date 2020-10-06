@@ -5,9 +5,10 @@ const checkResponse = (response) => {
   return response.json();
 };
 
-const backEndApiCall = (route, body = {}) => {
+const backEndApiCall = (method, route, body = {}) => {
+ 
   return fetch(`${process.env.REACT_APP_API}${route}`, {
-    method: "POST",
+    method: method,
     headers: {
       "Content-Type": "application/json",
     },

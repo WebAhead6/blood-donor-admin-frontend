@@ -17,7 +17,7 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
   };
 
   const handleSaveClick = () => {
-    backEndApiCall("/alerts", {
+    backEndApiCall("POST", "/alerts", {
       bloodType: bloodType.value,
       title: {
         he: entryText[0].title,
