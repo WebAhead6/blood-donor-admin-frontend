@@ -1,9 +1,11 @@
 import React from 'react'
+import ResetPassword from "../../general/resetPassword";
+import "./resetPasswordScreen.css"
 
 function ResetPasswordScreen() {
     return (
-        <div>
-            
+        <div className="resetPassPage">
+            <ResetPassword/>
         </div>
     )
 }

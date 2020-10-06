@@ -1,3 +1,2 @@
-
-import  ResetPasswordScreen from "./resetPasswordScreen.jsx";
+import ResetPasswordScreen from "./resetPasswordScreen.jsx";
 export default ResetPasswordScreen;

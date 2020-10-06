@@ -5,8 +5,8 @@ const checkResponse = (response) => {
   return response.json();
 };
 
-const postAdminData = (url, body = {}) => {
-  return fetch(`${process.env.REACT_APP_API}${url}`, {
+const backEndApiCall = (route, body = {}) => {
+  return fetch(`${process.env.REACT_APP_API}${route}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,4 +19,4 @@ const postAdminData = (url, body = {}) => {
       throw new Error(`fetch postAdminData falid ${err}`);
     });
 };
-export default postAdminData;
+export default backEndApiCall;
