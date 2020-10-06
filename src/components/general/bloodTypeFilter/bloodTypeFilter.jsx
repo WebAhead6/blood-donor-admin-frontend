@@ -26,7 +26,7 @@ function BloodTypeFilter() {
   };
 
   return (
-    <div>
+    <div className="bloodTypeFilter">
       <fieldset>
         <legend>blood type filter</legend>
         <Checkbox
@@ -38,7 +38,7 @@ function BloodTypeFilter() {
         </Checkbox>
 
         <CheckboxGroup
-          className="bloodType-checkBox"
+          className="bloodTypeFilter-checkBox"
           inline
           name="checkboxList"
           value={checkall.value}
