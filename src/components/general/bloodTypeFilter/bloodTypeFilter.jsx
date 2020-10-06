@@ -24,6 +24,7 @@ function BloodTypeFilter() {
       indeterminate: value.length > 0 && value.length < options.length,
       checkAll: value.length === options.length,
     });
+    localStorage.setItem("bloodType", value);
   };
   return (
     <div>

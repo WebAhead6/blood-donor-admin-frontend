@@ -1,17 +1,34 @@
 import React from "react";
+import postAdminData from "../../utlis/PostAdminData";
 import "./addEntry.css";
-import AlertEntryContainer from "../alertEntryContainer/index";
+import { newAlertTextAtom } from "../../../recoilsState";
+import { useRecoilState } from "recoil";
 
 const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
-  // const [isAdd, setIsAdd] = React.useState(false);
+  const [entryText, setEntryText] = useRecoilState(newAlertTextAtom);
 
   const handleAddClick = () => {
-    // setIsAdd(true);
     if (onAddClick) onAddClick();
   };
 
   const handleCancelClick = () => {
     if (onCancelClick) onCancelClick();
+  };
+
+  const handleSaveClick = () => {
+    postAdminData("/alerts", {
+      bloodType: "",
+      title: {
+        he: entryText[0].title,
+        ar: entryText[1].title,
+        en: entryText[2].title,
+      },
+      context: {
+        he: entryText[0].context,
+        ar: entryText[1].context,
+        en: entryText[2].context,
+      },
+    });
   };
   return (
     <div className="addEntry-container">
@@ -22,7 +39,9 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
         </button>
       ) : (
         <div className="addEntry-btns">
-          <button className="addEntry-saveBtn">Save</button>
+          <button className="addEntry-saveBtn" onClick={handleSaveClick}>
+            Save
+          </button>
           <button className="addEntry-cancelBtn" onClick={handleCancelClick}>
             Cancel
           </button>
