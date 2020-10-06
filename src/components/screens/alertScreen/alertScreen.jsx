@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { newAlertTextAtom } from "../../../recoilsState";
-import AddEntry from "../../general/addEntry";
+import AddEntryBar from "../../general/addEntryBar";
 import AlertEntryContainer from "../../general/alertEntryContainer";
 
 import "./alertScreen.css";
@@ -11,7 +11,7 @@ function AlertScreen() {
   const [isAdd, setIsAdd] = React.useState(true);
   return (
     <div className="alertScreen">
-      <AddEntry
+      <AddEntryBar
         isAdd={isAdd}
         onAddClick={() => setIsAdd(false)}
         onCancelClick={() => setIsAdd(true)}

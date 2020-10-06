@@ -1,10 +1,10 @@
 import React from "react";
 import backEndApiCall from "../../../utils/backEndApiCall";
-import "./addEntry.css";
+import "./addEntryBar.css";
 import { newAlertTextAtom, newAlertBloodTypeAtom } from "../../../recoilsState";
 import { useRecoilState } from "recoil";
 
-const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
+const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
   const [entryText, setEntryText] = useRecoilState(newAlertTextAtom);
   const [bloodType, setBloodType] = useRecoilState(newAlertBloodTypeAtom);
 
@@ -32,18 +32,18 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
     });
   };
   return (
-    <div className="addEntry-container">
+    <div className="addEntryBar-container">
       Alerts
       {isAdd ? (
-        <button onClick={handleAddClick} className="addEntry-addBtn">
+        <button onClick={handleAddClick} className="addEntryBar-addBtn">
           add
         </button>
       ) : (
-        <div className="addEntry-btns">
-          <button className="addEntry-saveBtn" onClick={handleSaveClick}>
+        <div className="addEntryBar-btns">
+          <button className="addEntryBar-saveBtn" onClick={handleSaveClick}>
             Save
           </button>
-          <button className="addEntry-cancelBtn" onClick={handleCancelClick}>
+          <button className="addEntryBar-cancelBtn" onClick={handleCancelClick}>
             Cancel
           </button>
         </div>
@@ -52,4 +52,4 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
   );
 };
 
-export default AddEntry;
+export default AddEntryBar;
