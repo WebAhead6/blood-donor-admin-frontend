@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "../../general/login";
-import { backEndApiCall } from "../../../utils/backEndApiCall";
+import backEndApiCall from "../../../utils/backEndApiCall";
 import "./loginScreen.css";
 
 function LoginScreen() {
