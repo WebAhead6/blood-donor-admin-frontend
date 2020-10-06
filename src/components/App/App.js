@@ -1,54 +1,59 @@
 import React from "react";
-import { BrowserRouter as  Switch, Route } from "react-router-dom";
-
+import { Switch, Route } from "react-router-dom";
+// import constants
+import {routes} from "../../constants"
 //general import
 import NavBar from "../general/navBar/navBar.jsx";
-
-//screens import
-import HomeScreen from "../screens/homeScreen/homeScreen";
-import AlertScreen from "../screens/alertScreen/index";
-import ChangePassowrdScreen from "../screens/changePassowrdScreen/changePassowrdScreen.jsx";
-import GoalsScreen from "../screens/goalsScreen/goalsScreen.jsx";
-import LocationsScreen from "../screens/locationsScreen/locationsScreen.jsx";
-import LoginScreen from "../screens/loginScreen/loginScreen.jsx";
-import ResetPasswordScreen from "../screens/resetPasswordScreen/resetPasswordScreen.jsx";
+//screen componetnts import
+import HomeScreen from "../screens/homeScreen";
+import AlertScreen from "../screens/alertScreen";
+import ChangePassowrdScreen from "../screens/changePassowrdScreen";
+import GoalsScreen from "../screens/goalsScreen";
+import LocationsScreen from "../screens/locationsScreen";
+import LoginScreen from "../screens/loginScreen";
+import ResetPasswordScreen from "../screens/resetPasswordScreen";
+import HomeMenuScreen from "../screens/homeMenuScreen";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Switch>
-         <Route exact path="/">
-          <HomeScreen />
-        </Route>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path={routes.home}>
+            <HomeScreen />
+          </Route>
 
-        <Route exact path="/alertscreen">
-          <AlertScreen />
-        </Route> 
+          <Route exact path={routes.alertScreen}>
+            <AlertScreen />
+          </Route>
 
-        <Route exact path="/changepassowrdscreen">
-          <ChangePassowrdScreen />
-        </Route>
+          <Route exact path={routes.ChangePassowrdScreen}>
+            <ChangePassowrdScreen />
+          </Route>
 
-        <Route exact path="/goalsscreen">
-          <GoalsScreen />
-        </Route>
+          <Route exact path={routes.GoalsScreen}>
+            <GoalsScreen />
+          </Route>
 
-        <Route exact path="/locationsscreen">
-          <LocationsScreen />
-        </Route>
+          <Route exact path={routes.HomeMenuScreen}>
+            <HomeMenuScreen />
+          </Route>
 
-        <Route exact path="/loginscreen">
-          <LoginScreen />
-        </Route>
-        
-        <Route exact path="/resetpasswordscreen">
-          <ResetPasswordScreen /> 
-         </Route>
-      </Switch>
-    </div>
+          <Route exact path={routes.LocationsScreen}>
+            <LocationsScreen />
+          </Route>
+
+          <Route exact path={routes.LoginScreen}>
+            <LoginScreen />
+          </Route>
+
+          <Route exact path={routes.ResetPasswordScreen}>
+            <ResetPasswordScreen />
+          </Route>
+        </Switch>
+      </div>
   );
 }
 

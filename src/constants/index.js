@@ -1,12 +1,14 @@
 export const routes = {
     home: "/",
-    alertScreen: "/changepassowrdscreen",
-    ChangePassowrdScreen: "/changepassowrdscreen",
-    GoalsScreen: "/goalsscreen",
-    HomeScreen: "/homescreen",
-    LocationsScreen: "/locationsscreen",
-    LoginScreen: "/loginscreen",
-    ResetPasswordScreen: "/resetpasswordscreen"
+    alertScreen: "/alert",
+    ChangePassowrdScreen: "/changepassowrd",
+    GoalsScreen: "/goals",
+    HomeMenuScreen: "/homeMenu",
+    LocationsScreen: "/locations",
+    LoginScreen: "/login",
+    ResetPasswordScreen: "/resetpassword",
+    logout: "/logout"
+
 }
 
 

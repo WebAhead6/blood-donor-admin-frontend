@@ -7,10 +7,12 @@ import { RecoilRoot } from "recoil";
 
 ReactDOM.render(
   <React.StrictMode>
+
     <Router>
       <RecoilRoot>
         <App />
       </RecoilRoot>
+
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
