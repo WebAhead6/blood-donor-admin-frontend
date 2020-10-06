@@ -1,2 +1,2 @@
-import  LoginScreen from "./loginscreen";
+import  LoginScreen from "./loginScreen.jsx";
 export default LoginScreen;

@@ -1,14 +1,12 @@
 import React from "react";
 import "./bloodTypeFilter.css";
 import { Checkbox, CheckboxGroup } from "rsuite";
+import { newAlertBloodTypeAtom } from "../../../recoilsState";
+import { useRecoilState } from "recoil";
 
 function BloodTypeFilter() {
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
-  const [checkall, setCheckAll] = React.useState({
-    indeterminate: true,
-    checkAll: false,
-    value: [],
-  });
+  const [checkall, setCheckAll] = useRecoilState(newAlertBloodTypeAtom);
   const handleCheckAll = (value, checked) => {
     const nextValue = checked ? options : [];
 
@@ -24,7 +22,9 @@ function BloodTypeFilter() {
       indeterminate: value.length > 0 && value.length < options.length,
       checkAll: value.length === options.length,
     });
+    localStorage.setItem("bloodType", value);
   };
+
   return (
     <div>
       <fieldset>

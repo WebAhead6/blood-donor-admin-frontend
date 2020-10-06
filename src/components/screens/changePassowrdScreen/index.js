@@ -1,3 +1,3 @@
-import  ChangePassowrdScreen from "./changepassowrdscreen";
+import  ChangePassowrdScreen from "./changePassowrdScreen.jsx";
 export default ChangePassowrdScreen;
 
