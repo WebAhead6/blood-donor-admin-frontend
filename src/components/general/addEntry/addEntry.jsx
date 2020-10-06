@@ -1,5 +1,5 @@
 import React from "react";
-import postAdminData from "../../utlis/PostAdminData";
+import backEndApiCall from "../../../utils/backEndApiCall";
 import "./addEntry.css";
 import { newAlertTextAtom, newAlertBloodTypeAtom } from "../../../recoilsState";
 import { useRecoilState } from "recoil";
@@ -17,7 +17,7 @@ const AddEntry = function ({ isAdd, onAddClick, onCancelClick }) {
   };
 
   const handleSaveClick = () => {
-    postAdminData("/alerts", {
+    backEndApiCall("/alerts", {
       bloodType: bloodType.value,
       title: {
         he: entryText[0].title,
