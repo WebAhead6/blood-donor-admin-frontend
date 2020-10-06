@@ -1,2 +1,2 @@
-import  GoalsScreen from "./goalsscreen";
+import  GoalsScreen from "./goalsScreen.jsx";
 export default GoalsScreen;
