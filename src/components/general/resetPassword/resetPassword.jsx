@@ -3,7 +3,6 @@ import "./resetPassword.css";
 
 
 const ResetPassword = function ({ email,handleClick,onEmailChange,error}) {
-
     return (
 
   <div className="resetpassword login"> 

@@ -8,9 +8,9 @@ function ResetPasswordScreen() {
     const [adminResetData, setAdminResetData] = React.useState({email:"", error:""});
     const handleClick = () => {
         backEndApiCall("POST",`/resetPassword`,{emailAddress: adminResetData.email})
-          .then((data) => {
+          .then(({data}) => {
             console.log(data);
-            setAdminResetData({...adminResetData ,error: value})
+            setAdminResetData({...adminResetData ,error: valueOf()})
           })
           .catch(console.error);
       };
@@ -20,7 +20,7 @@ function ResetPasswordScreen() {
             email={adminResetData.email}
             onEmailChange={value => setAdminResetData({...adminResetData ,email: value})}
             handleClick={handleClick} 
-            error = {error}
+            error = {adminResetData.error}
             />
             
         </div>
@@ -29,3 +29,26 @@ function ResetPasswordScreen() {
 
 export default ResetPasswordScreen
 
+
+// function ResetPasswordScreen() {
+//   const [adminResetData, setAdminResetData] = React.useState({email:"", error:""});
+//   const handleClick = () => {
+//       backEndApiCall("POST",`/resetPassword`,{emailAddress: adminResetData.email})
+//         .then(({data}) => {
+//           console.log(data);
+//           setAdminResetData({...adminResetData ,error: value})
+//         })
+//         .catch(console.error);
+//     };
+//   return (
+//       <div className="resetPassPage">
+//           <ResetPassword
+//           email={adminResetData.email}
+//           onEmailChange={value => setAdminResetData({...adminResetData ,email: value})}
+//           handleClick={handleClick} 
+//           error = {error}
+//           />
+          
+//       </div>
+//   )
+// }

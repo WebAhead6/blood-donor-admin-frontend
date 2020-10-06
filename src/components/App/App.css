@@ -1,24 +1,6 @@
-:root {
-  --color-navy: #314e71;
-  --color-white: white;
-  --color-gray-lite: #e8e8e8;
-  --color-drop-orange: #cdaa53;
-  --color-green: #1d886d;
-
-  --color-drop-red: #921616;
-
-  --color-entry-background: rgba(185, 129, 146, 0.3);
-
-  --color-gray: #f5f5f5;
-  --color-tranparent-green: rgba(70, 255, 70, 0.5);
-  --color-transparent-gray: rgba(255, 255, 255, 0.4);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .App {
   display: flex;
 }
-
 
 .App {
   display: flex;
