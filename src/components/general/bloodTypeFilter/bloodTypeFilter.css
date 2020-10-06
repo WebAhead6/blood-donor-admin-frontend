@@ -1,10 +1,10 @@
-/* fieldset {
-  background-color: #debac6;
+.bloodTypeFilter fieldset {
+  background-color: var(--color-entry-background);
 }
-legend {
+.bloodTypeFilter legend {
   text-align: center;
 }
-.bloodType-checkBox {
+.bloodTypeFilter-checkBox {
   display: flex;
   flex-direction: row;
-} */
+}

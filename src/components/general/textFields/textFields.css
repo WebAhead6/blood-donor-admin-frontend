@@ -1,0 +1,11 @@
+.textFields-input {
+  width: 100%;
+}
+
+.textFields {
+  background-color: var(--color-entry-background);
+}
+
+.textFields legend {
+  text-align: center;
+}
