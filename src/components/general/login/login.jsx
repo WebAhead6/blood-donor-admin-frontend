@@ -3,7 +3,8 @@ import "./login.css";
 import {Link} from "react-router-dom";
 import {routes} from "../../../constants"
 
-const Login = function ({email,password,handleClick,onEmailChange,onPasswordChange}) {
+
+const Login = function ({email,password,handleClick,onEmailChange,onPasswordChange,error}) {
 
   
 
@@ -23,7 +24,7 @@ const Login = function ({email,password,handleClick,onEmailChange,onPasswordChan
  <Link to={routes.ResetPasswordScreen}>
  <button className="login_forgotPass"> Forget your password?</button>
  </Link>
- <h2 className="login_error"> Error</h2>
+    <h2 className="login_error"> {error}</h2>
 </div>
   </div>
 
