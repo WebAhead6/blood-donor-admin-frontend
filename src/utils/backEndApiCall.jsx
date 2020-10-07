@@ -6,13 +6,12 @@ const checkResponse = (response) => {
 };
 
 const backEndApiCall = (method, route, body = {}) => {
- 
   return fetch(`${process.env.REACT_APP_API}${route}`, {
     method: method,
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: method === "GET" ? null : JSON.stringify(body),
   })
     .then(checkResponse)
     .catch((err) => {
