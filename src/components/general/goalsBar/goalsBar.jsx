@@ -15,6 +15,25 @@ const GoalsBar = function () {
     setGoal(value);
   };
 
+  // {
+  //   data: {
+  //   current: 3,
+  //   goal: 7
+  //   },
+  //   code: 200,
+  //   ok: true
+  //   }
+
+
+
+
+
+  const handleSaveClick = () => {
+    //backEndApiCall("/api/goals")
+     
+    
+  }
+
   return (
     <div className="goals_form_container">
       <div class="goals_form_title">
@@ -44,7 +63,7 @@ const GoalsBar = function () {
               onChange={(e) => onGoalChange(e.target.value)}
             />
           </label>
-          <button type="submit" class="goals_form_saveButton">
+          <button type="submit" class="goals_form_saveButton" onClick={handleSaveClick}>
             Save
           </button>
         </form>

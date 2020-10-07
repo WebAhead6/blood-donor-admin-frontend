@@ -11,12 +11,11 @@ function GoalsScreen() {
   const [current, setCurrent] = useRecoilState(newCurrentAtom);
   const [goal, setGoal] = useRecoilState(newGoalAtom);
 
-  const percentage = (current/ goal *100)
-console.log(percentage);
+  const percentage = Math.round(current/ goal *100)
     return (
         <div className="golScreen">
             <GolBar />
-            <Drop scale="1" text={percentage} percentage={percentage} />
+            <Drop scale="1" text={`${percentage}%`} percentage={percentage} />
         </div>
     )
 }
