@@ -9,15 +9,11 @@ var _recoil = require("recoil");
 
 var newGoalAtom = (0, _recoil.atom)({
   key: "Goal",
-  default: {
-    goal: 0
-  }
+  default: 0
 });
 exports.newGoalAtom = newGoalAtom;
 var newCurrentAtom = (0, _recoil.atom)({
   key: "current",
-  default: {
-    current: 0
-  }
+  default: 0
 });
 exports.newCurrentAtom = newCurrentAtom;
