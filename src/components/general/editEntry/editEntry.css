@@ -1,0 +1,35 @@
+.aditEntry-container {
+  padding-left: 5px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  margin-top: 25px;
+  border-style: solid;
+  border-style: black;
+}
+.aditEntry-addBtn,
+.aditEntry-saveBtn,
+.aditEntry-deleteBtn {
+  background-color: #048a81;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+.aditEntry-btns {
+  height: 100%;
+  border: none;
+}
+.aditEntry-cancelBtn {
+  background-color: #c9b747;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+.aditEntry-deleteBtn {
+  background-color: red;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}

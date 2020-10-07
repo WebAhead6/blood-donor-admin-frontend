@@ -16,6 +16,7 @@ function AlertEntryContainer({ data = [], setData }) {
       <BloodTypeFilter />
       {data.map(({ language, context, title }, index) => (
         <TextFields
+          key={language}
           legend={language}
           title={title}
           context={context}

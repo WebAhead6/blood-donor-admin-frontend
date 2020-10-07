@@ -4,12 +4,13 @@ import backEndApiCall from "../../../utils/backEndApiCall";
 import "./loginScreen.css";
 
 function LoginScreen() {
-  const [adminData, setAdminData] = React.useState({});
+  const [adminData, setAdminData] = React.useState({email:"",password:""});
+ 
   const handleClick = () => {
-    backEndApiCall(`/login`, { email: "", password: "" })
+    backEndApiCall("POST",`/login`,adminData)
       .then((data) => {
         console.log(data);
-        setAdminData(data);
+      
       })
       .catch(console.error);
   };
@@ -18,7 +19,9 @@ function LoginScreen() {
       <Login
         email={adminData.email}
         password={adminData.password}
-        handleClick={handleClick}
+        handleClick={handleClick} 
+        onEmailChange={value => setAdminData({...adminData, email: value})}
+        onPasswordChange={value => setAdminData({...adminData, password: value})}
       />
     </div>
   );

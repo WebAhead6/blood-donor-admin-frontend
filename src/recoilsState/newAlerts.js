@@ -31,3 +31,8 @@ export const newAlertBloodTypeAtom = atom({
     },
   ],
 });
+
+export const getNewAlertsAtom = atom({
+  key: "newAlert",
+  default: [{ addAlert: "" }],
+});
