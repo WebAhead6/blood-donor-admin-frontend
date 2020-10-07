@@ -45,83 +45,14 @@ function BloodTypeFilter() {
           onChange={handleChange}
         >
           {options.map((option) => (
-            <Checkbox value={option}>{option}</Checkbox>
+            <Checkbox key={option} value={option}>
+              {option}
+            </Checkbox>
           ))}
         </CheckboxGroup>
       </fieldset>
     </div>
   );
 }
-//   const [bloodType, setBloodType] = React.useState({});
-//   return (
-//     <div className="bloodTypeFilter-container">
-//       <form>
-//         <fieldset>
-//           <legend>blood type filter</legend>
-//           <div>
-//             <button>all</button>
-//             <button>none</button>
-//           </div>
-//           <input
-//             type="checkbox"
-//             name="A+"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="A+">A+</label>
-//           <input
-//             type="checkbox"
-//             name="A-"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="A-"> A-</label>
-//           <input
-//             type="checkbox"
-//             name="B+"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="B+">B+</label>
-//           <input
-//             type="checkbox"
-//             name="B-"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="B-">B-</label>
-//           <input
-//             type="checkbox"
-//             name="AB-"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="AB-">AB-</label>
-//           <input
-//             type="checkbox"
-//             name="AB+"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="AB+">AB+</label>
-//           <input
-//             type="checkbox"
-//             name="O+"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="O+">O+</label>
-//           <input
-//             type="checkbox"
-//             name="O-"
-//             value={bloodType}
-//             onChange={(e) => setBloodType(e.target.value)}
-//           />
-//           <label for="O-">O-</label>
-//         </fieldset>
-//       </form>
-//     </div>
-//   );
-// }
 
 export default BloodTypeFilter;

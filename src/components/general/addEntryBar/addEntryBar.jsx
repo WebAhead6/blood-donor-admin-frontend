@@ -3,6 +3,7 @@ import backEndApiCall from "../../../utils/backEndApiCall";
 import "./addEntryBar.css";
 import { newAlertTextAtom, newAlertBloodTypeAtom } from "../../../recoilsState";
 import { useRecoilState } from "recoil";
+import { addAlert, getAlertsData } from "../../../utils/alert";
 
 const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
   const [entryText, setEntryText] = useRecoilState(newAlertTextAtom);
@@ -17,19 +18,11 @@ const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
   };
 
   const handleSaveClick = () => {
-    backEndApiCall("/alerts", {
-      bloodType: bloodType.value,
-      title: {
-        he: entryText[0].title,
-        ar: entryText[1].title,
-        en: entryText[2].title,
-      },
-      context: {
-        he: entryText[0].context,
-        ar: entryText[1].context,
-        en: entryText[2].context,
-      },
-    });
+    (async () => {
+      await addAlert(bloodType, entryText);
+      const newAlert = await getAlertsData();
+      console.log(newAlert);
+    })();
   };
   return (
     <div className="addEntryBar-container">
