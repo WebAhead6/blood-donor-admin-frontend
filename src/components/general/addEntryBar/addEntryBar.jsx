@@ -18,11 +18,11 @@ const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
   };
 
   const handleSaveClick = () => {
-    (async () => {
-      await addAlert(bloodType, entryText);
-      const newAlert = await getAlertsData();
-      console.log(newAlert);
-    })();
+    // (async () => {
+    //   await addAlert(bloodType, entryText);
+    //   const newAlert = await getAlertsData();
+    //   console.log(newAlert);
+    // })();
   };
   return (
     <div className="addEntryBar-container">

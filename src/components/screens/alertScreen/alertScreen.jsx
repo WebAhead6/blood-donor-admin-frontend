@@ -4,7 +4,7 @@ import { newAlertTextAtom, getNewAlertsAtom } from "../../../recoilsState";
 import AddEntryBar from "../../general/addEntryBar";
 import EditEntry from "../../general/editEntry";
 import AlertEntryContainer from "../../general/alertEntryContainer";
-import { addAlert, getAlertsData } from "../../../utils/alert";
+import { getAlertsData } from "../../../utils/alert";
 
 import "./alertScreen.css";
 
@@ -34,11 +34,11 @@ function AlertScreen() {
         onEditClick={() => setIsEdit(false)}
         onCancelClick={() => setIsEdit(true)}
       />
-      {/* {!isEdit ? (
-        <AlertEntryContainer  data={getAlert} setData={setGetAlert}/>
+      {!isEdit ? (
+        <AlertEntryContainer data={getAlert} setData={setGetAlert} />
       ) : (
         ""
-      )} */}
+      )}
     </div>
   );
 }

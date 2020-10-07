@@ -1,3 +1,3 @@
-// import BloodTypeFilter from "./bloodTypeFilter";
+import BloodTypeFilter from "./bloodTypeFilter";
 
-// export default BloodTypeFilter;
+export default BloodTypeFilter;
