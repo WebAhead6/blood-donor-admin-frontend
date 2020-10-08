@@ -1,38 +1,41 @@
 import { atom } from "recoil";
 
-export const newAlertTextAtom = atom({
+export const newAlertData = atom({
   key: "TextAlerts",
-  default: [
-    {
-      language: "Hebrew",
-      context: "",
-      title: "",
-    },
-    {
-      language: "Arabic",
-      context: "",
-      title: "",
-    },
-    {
-      language: "English",
-      context: "",
-      title: "",
-    },
-  ],
+  default: {
+    bloodType: [],
+    textArray: [
+      {
+        language: "Hebrew",
+        context: "",
+        title: "",
+      },
+      {
+        language: "Arabic",
+        context: "",
+        title: "",
+      },
+      {
+        language: "English",
+        context: "",
+        title: "",
+      },
+    ],
+  },
 });
 
-export const newAlertBloodTypeAtom = atom({
-  key: "BloodTypeAlerts",
-  default: [
-    {
-      indeterminate: true,
-      checkAll: false,
-      value: [],
-    },
-  ],
-});
+// export const newAlertBloodTypeAtom = atom({
+//   key: "BloodTypeAlerts",
+//   default: [
+//     {
+//       indeterminate: true,
+//       checkAll: false,
+//       value: [],
+//     },
+//   ],
+// });
 
-export const getNewAlertsAtom = atom({
+export const getApiAlertsAtom = atom({
   key: "newAlert",
-  default: [{ addAlert: "" }],
+  default: [],
 });
