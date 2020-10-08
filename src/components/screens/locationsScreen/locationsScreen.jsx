@@ -1,49 +1,16 @@
 import React from "react";
 import "./locationsScreen.css";
+import LocationsButton from "../../general/locationsButton/locationsButton"
 
 function LocationsScreen() {
   return (
     <fieldset className="container">
       <legend>Download for Windows</legend>
-      <a href="/exeFiles/fetchDataFromMada-win.exe" target="_blank" download>
-        <button class="button">runs once only</button>
-      </a>
-      <div class="space"></div>
-
-      <a
-        href="/exeFiles/fetchDataFromMadaEveryHalfHour-win.exe"
-        target="_blank"
-        download
-      >
-        <button class="button">runs every half an hour</button>
-      </a>
-      <div class="space"></div>
-
-      <a
-        href="/exeFiles/fetchDataFromMadaEveryHour-win.exe"
-        target="_blank"
-        download
-      >
-        <button class="button">runs every hour</button>
-      </a>
-      <div class="space"></div>
-
-      <a
-        href="/exeFiles/fetchDataFromMadaEvery2Hours-win.exe"
-        target="_blank"
-        download
-      >
-        <button class="button">runs every two hour</button>
-      </a>
-      <div class="space"></div>
-
-      <a
-        href="/exeFiles/fetchDataFromMadaEvery3Hours-win.exe"
-        target="_blank"
-        download
-      >
-        <button class="button">runs every three hour</button>
-      </a>
+      <LocationsButton href={`/exeFiles/fetchDataFromMada-win.exe`} title={"runs once only"} />
+      <LocationsButton href={"/exeFiles/fetchDataFromMadaEveryHalfHour-win.exe"} title={"runs every half an hour"} />
+      <LocationsButton href={"/exeFiles/fetchDataFromMadaEveryHour-win.exe"} title={"runs every hour"} />
+      <LocationsButton href={"/exeFiles/fetchDataFromMadaEvery2Hours-win.exe"} title={"runs every two hour"} />
+      <LocationsButton href={"/exeFiles/fetchDataFromMadaEvery3Hours-win.exe"} title={"runs every three hour"} />
     </fieldset>
   );
 }
