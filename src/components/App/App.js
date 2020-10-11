@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 // import constants
 import {routes} from "../../constants"
@@ -15,11 +15,15 @@ import ResetPasswordScreen from "../screens/resetPasswordScreen";
 import HomeMenuScreen from "../screens/homeMenuScreen";
 import { useRecoilState } from "recoil";
 import { isLoggedInAtom } from "../../recoilsState";
+import {isLoggedIn as checkLogin}  from "../../utils/login"
 
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom)
+  useEffect(() => {
+    checkLogin().then(checkLogedIn => setIsLoggedIn(checkLogedIn))
+  }, []);
   if (!isLoggedIn) return <div className="App">
      <Switch>
          <Route exact path={routes.ResetPasswordScreen}>

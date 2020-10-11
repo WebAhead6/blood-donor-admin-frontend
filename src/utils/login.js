@@ -1,4 +1,3 @@
-import ResetPassword from "../components/general/resetPassword";
 import backEndApiCall from "./backEndApiCall";
 
 export const login = async (email, password) => {
@@ -25,7 +24,7 @@ export const logOut = async () => {
 }
 
 export const isLoggedIn = async () => {
-    try {
+       try {
         const response = await backEndApiCall("GET", "/isLoggedIn")
         return response.data.isLoggedIn;
 
