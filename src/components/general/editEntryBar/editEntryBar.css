@@ -1,0 +1,35 @@
+.aditEntryBar-container {
+  padding-left: 5px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  margin-top: 25px;
+  border-style: solid;
+  border-style: black;
+}
+.aditEntryBar-addBtn,
+.aditEntryBar-saveBtn,
+.aditEntryBar-deleteBtn {
+  background-color: #048a81;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+.aditEntryBar-btns {
+  height: 100%;
+  border: none;
+}
+.aditEntryBar-cancelBtn {
+  background-color: #c9b747;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+.aditEntryBar-deleteBtn {
+  background-color: red;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}

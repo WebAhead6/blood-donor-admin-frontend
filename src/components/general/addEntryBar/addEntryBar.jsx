@@ -1,14 +1,13 @@
 import React from "react";
-import backEndApiCall from "../../../utils/backEndApiCall";
+
 import "./addEntryBar.css";
-import { newAlertTextAtom, newAlertBloodTypeAtom } from "../../../recoilsState";
-import { useRecoilState } from "recoil";
-import { addAlert, getAlertsData } from "../../../utils/alert";
 
-const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
-  const [entryText, setEntryText] = useRecoilState(newAlertTextAtom);
-  const [bloodType, setBloodType] = useRecoilState(newAlertBloodTypeAtom);
-
+const AddEntryBar = function ({
+  isAdd,
+  onAddClick,
+  onCancelClick,
+  onSaveClick,
+}) {
   const handleAddClick = () => {
     if (onAddClick) onAddClick();
   };
@@ -18,11 +17,7 @@ const AddEntryBar = function ({ isAdd, onAddClick, onCancelClick }) {
   };
 
   const handleSaveClick = () => {
-    // (async () => {
-    //   await addAlert(bloodType, entryText);
-    //   const newAlert = await getAlertsData();
-    //   console.log(newAlert);
-    // })();
+    if (onSaveClick) onSaveClick();
   };
   return (
     <div className="addEntryBar-container">
