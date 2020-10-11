@@ -2,6 +2,7 @@ import React from "react";
 import "./bloodTypeFilter.css";
 import { Checkbox, CheckboxGroup } from "rsuite";
 
+
 function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
@@ -12,6 +13,8 @@ function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
   };
   const handleChange = (value = []) => {
     if (canEdit) onChange(value);
+
+
   };
   console.log(options.length === valueArray.length);
   return (

@@ -8,6 +8,7 @@ const EditEntryBar = function ({
   title,
   onDeleteClick,
   onSaveClick,
+
   onInputClick,
 }) {
   return (
@@ -15,6 +16,7 @@ const EditEntryBar = function ({
       <div className="aditEntryBar-title" onClick={onInputClick}>
         {title}
       </div>
+
       {isEdit ? (
         <button onClick={onEditClick} className="aditEntryBar-addBtn">
           Edit
