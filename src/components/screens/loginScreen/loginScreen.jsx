@@ -2,13 +2,16 @@ import React from "react";
 import Login from "../../general/login";
 import "./loginScreen.css";
 import { login } from "../../../utils/login";
+import {useHistory} from "react-router-dom";
+import { routes } from "../../../constants";
 
 
 function LoginScreen() {
   const [adminData, setAdminData] = React.useState({email:"",password:""});
+  const history = useHistory()
  
   const handleClick = () => {
-  login(adminData.email, adminData.password).then().catch(e => setAdminData({...adminData, error:e.message}))
+  login(adminData.email, adminData.password).then(()=> history.push(routes.home)).catch(({message}) => setAdminData({...adminData, error:message}))
   }
   return (
     <div className="loginPage">
