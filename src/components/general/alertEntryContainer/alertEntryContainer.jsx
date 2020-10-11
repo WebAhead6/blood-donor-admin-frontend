@@ -7,6 +7,8 @@ import { deleteAlert, editAlert, getAlertsData } from "../../../utils/alert";
 
 function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
   const [isEdit, setIsEdit] = React.useState(true);
+  const [isShow, setIsShow] = React.useState(true);
+
   const [, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [localState, setLocalState] = React.useState({
     textArray,
@@ -33,13 +35,25 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
     <div>
       <EditEntryBar
         isEdit={isEdit}
+        isShow={isShow}
         onEditClick={() => setIsEdit(false)}
+        onShowClick={() => setIsShow(false)}
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
         title={localState.textArray[2].title}
       />
-      {!isEdit ? (
+      {!isEdit  ? (
+        <AlertEntryContent
+          textArray={localState.textArray}
+          addedDate={localState.addedDate}
+          bloodType={localState.bloodType}
+          setData={setLocalState}
+        />
+        
+      ) : (
+        ""
+      )} {!isShow  ? (
         <AlertEntryContent
           textArray={localState.textArray}
           addedDate={localState.addedDate}
