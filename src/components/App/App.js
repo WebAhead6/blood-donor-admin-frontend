@@ -13,10 +13,25 @@ import LocationsScreen from "../screens/locationsScreen";
 import LoginScreen from "../screens/loginScreen";
 import ResetPasswordScreen from "../screens/resetPasswordScreen";
 import HomeMenuScreen from "../screens/homeMenuScreen";
+import { useRecoilState } from "recoil";
+import { isLoggedInAtom } from "../../recoilsState";
 
 import "./App.css";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom)
+  if (!isLoggedIn) return <div className="App">
+     <Switch>
+         <Route exact path={routes.ResetPasswordScreen}>
+            <ResetPasswordScreen />
+          </Route>
+
+          <Route  path={routes.home}>
+          <LoginScreen/>
+          </Route>
+            
+    </Switch>
+    </div>
   return (
       <div className="App">
         <NavBar />
@@ -45,13 +60,9 @@ function App() {
             <LocationsScreen />
           </Route>
 
-          <Route exact path={routes.LoginScreen}>
-            <LoginScreen />
-          </Route>
+         
 
-          <Route exact path={routes.ResetPasswordScreen}>
-            <ResetPasswordScreen />
-          </Route>
+         
         </Switch>
       </div>
   );
