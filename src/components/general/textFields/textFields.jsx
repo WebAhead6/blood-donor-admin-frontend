@@ -7,30 +7,33 @@ function TextFields({
   context,
   onTitleChange,
   onContextChange,
+  canEdit,
 }) {
   return (
     <div className="textFields">
       <fieldset>
         <legend>{legend}</legend>
 
-        <label>title</label>
+        <label for="title">title</label>
         <br />
         <input
+          required
           className="textFields-input"
           type="text"
           name="title"
           value={title}
-          onChange={onTitleChange}
+          onChange={(e) => canEdit && onTitleChange(e)}
         />
         <br />
         <label>sub-title</label>
         <br />
         <input
+          required
           className="textFields-input"
           type="text"
           name="title"
           value={context}
-          onChange={onContextChange}
+          onChange={(e) => canEdit && onContextChange(e)}
         />
       </fieldset>
     </div>

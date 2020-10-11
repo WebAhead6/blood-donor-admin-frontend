@@ -1,46 +1,42 @@
 import React from "react";
 import "./bloodTypeFilter.css";
 import { Checkbox, CheckboxGroup } from "rsuite";
-import { newAlertBloodTypeAtom } from "../../../recoilsState";
-import { useRecoilState } from "recoil";
 
-function BloodTypeFilter() {
+
+function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
-  const [checkall, setCheckAll] = useRecoilState(newAlertBloodTypeAtom);
-  const handleCheckAll = (value, checked) => {
-    const nextValue = checked ? options : [];
 
-    setCheckAll({
-      value: nextValue,
-      indeterminate: false,
-      checkAll: checked,
-    });
+  const handleCheckAll = (value) => {
+    if (canEdit)
+      if (value.length) onChange(options);
+      else onChange([]);
   };
-  const handleChange = (value) => {
-    setCheckAll({
-      value,
-      indeterminate: value.length > 0 && value.length < options.length,
-      checkAll: value.length === options.length,
-    });
-  };
+  const handleChange = (value = []) => {
+    if (canEdit) onChange(value);
 
+
+  };
+  console.log(options.length === valueArray.length);
   return (
     <div className="bloodTypeFilter">
       <fieldset>
         <legend>blood type filter</legend>
-        <Checkbox
-          indeterminate={checkall.indeterminate}
-          checked={checkall.checkAll}
+        <CheckboxGroup
+          value={options.length === valueArray.length ? ["all"] : []}
           onChange={handleCheckAll}
         >
-          Check all
-        </Checkbox>
+          {[
+            <Checkbox key="all" value="all">
+              Check all
+            </Checkbox>,
+          ]}
+        </CheckboxGroup>
 
         <CheckboxGroup
           className="bloodTypeFilter-checkBox"
           inline
           name="checkboxList"
-          value={checkall.value}
+          value={valueArray}
           onChange={handleChange}
         >
           {options.map((option) => (

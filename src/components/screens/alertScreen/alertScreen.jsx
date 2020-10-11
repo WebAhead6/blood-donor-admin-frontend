@@ -1,44 +1,63 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { newAlertTextAtom, getNewAlertsAtom } from "../../../recoilsState";
+import { newAlertData, getApiAlertsAtom } from "../../../recoilsState";
 import AddEntryBar from "../../general/addEntryBar";
-import EditEntry from "../../general/editEntry";
+
+import AlertEntryContent from "../../general/alertEntryContent";
 import AlertEntryContainer from "../../general/alertEntryContainer";
-import { getAlertsData } from "../../../utils/alert";
+import { addAlert, getAlertsData } from "../../../utils/alert";
 
 import "./alertScreen.css";
 
 function AlertScreen() {
-  const [newEntryData, setNewEntryData] = useRecoilState(newAlertTextAtom);
-  const [getAlert, setGetAlert] = useRecoilState(getNewAlertsAtom);
+  const [newEntryData, setNewEntryData] = useRecoilState(newAlertData);
+  const [getAlert, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [isAdd, setIsAdd] = React.useState(true);
-  const [isEdit, setIsEdit] = React.useState(true);
 
   React.useEffect(() => {
-    setGetAlert(getAlertsData);
+    getAlertsData()
+      .then((data) => {
+        setGetAlert(data);
+      })
+      .catch(() => {});
   }, []);
+
+  const handleSaveClick = async () => {
+    await addAlert(newEntryData.bloodType, newEntryData.textArray);
+    const newAlerts = await getAlertsData();
+    setGetAlert(newAlerts);
+    setIsAdd(true);
+  };
+
   return (
     <div className="alertScreen">
       <AddEntryBar
         isAdd={isAdd}
         onAddClick={() => setIsAdd(false)}
         onCancelClick={() => setIsAdd(true)}
+        onSaveClick={handleSaveClick}
       />
       {!isAdd ? (
-        <AlertEntryContainer data={newEntryData} setData={setNewEntryData} />
+        <AlertEntryContent
+          textArray={newEntryData.textArray}
+          setData={setNewEntryData}
+          bloodType={newEntryData.bloodType}
+
+          canEdit={true}
+
+        />
       ) : (
         ""
       )}
-      <EditEntry
-        isEdit={isEdit}
-        onEditClick={() => setIsEdit(false)}
-        onCancelClick={() => setIsEdit(true)}
-      />
-      {!isEdit ? (
-        <AlertEntryContainer data={getAlert} setData={setGetAlert} />
-      ) : (
-        ""
-      )}
+      {getAlert.map(({ textArray, bloodType = [], id, addedDate }) => (
+        <AlertEntryContainer
+          key={id}
+          id={id}
+          bloodType={bloodType}
+          textArray={textArray}
+          addedDate={addedDate}
+        />
+      ))}
     </div>
   );
 }
