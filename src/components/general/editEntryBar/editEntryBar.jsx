@@ -8,10 +8,15 @@ const EditEntryBar = function ({
   title,
   onDeleteClick,
   onSaveClick,
+
+  onInputClick,
 }) {
   return (
     <div className="aditEntryBar-container">
-      {title}
+      <div className="aditEntryBar-title" onClick={onInputClick}>
+        {title}
+      </div>
+
       {isEdit ? (
         <button onClick={onEditClick} className="aditEntryBar-addBtn">
           Edit
