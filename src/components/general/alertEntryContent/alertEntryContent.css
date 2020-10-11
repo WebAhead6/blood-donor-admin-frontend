@@ -1,2 +1,3 @@
-.alertEntryContent {
+.preventEdit {
+  pointer-events: none;
 }

@@ -3,7 +3,13 @@ import "./alertEntryContent.css";
 import TextFields from "../textFields";
 import BloodTypeFilter from "../bloodTypeFilter";
 
-function AlertEntryContent({ textArray = [], setData, bloodType, addedDate }) {
+function AlertEntryContent({
+  textArray = [],
+  setData,
+  bloodType,
+  addedDate,
+  canEdit,
+}) {
   const onChange = (index, fieldName, value) => {
     const arrClone = [...textArray];
     const changedData = { ...textArray[index], [fieldName]: value };
@@ -16,13 +22,18 @@ function AlertEntryContent({ textArray = [], setData, bloodType, addedDate }) {
 
   return (
     <div className="alertEntryContent">
-      <BloodTypeFilter valueArray={bloodType} onChange={onBloodTypeChange} />
+      <BloodTypeFilter
+        canEdit={canEdit}
+        valueArray={bloodType}
+        onChange={onBloodTypeChange}
+      />
       {textArray.map(({ language, context, title }, index) => (
         <TextFields
           key={language}
           legend={language}
           title={title}
           context={context}
+          canEdit={canEdit}
           onContextChange={(e) => onChange(index, "context", e.target.value)}
           onTitleChange={(e) => onChange(index, "title", e.target.value)}
         />

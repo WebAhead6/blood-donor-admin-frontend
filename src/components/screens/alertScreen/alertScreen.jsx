@@ -42,6 +42,7 @@ function AlertScreen() {
           textArray={newEntryData.textArray}
           setData={setNewEntryData}
           bloodType={newEntryData.bloodType}
+          canEdit={true}
         />
       ) : (
         ""
