@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter,NavLink, useLocation, useHistory} from "react-router-dom";
 import { routes } from "../../../constants";
 import { logOut } from "../../../utils/login";
+import { useRecoilState } from "recoil";
+import { isLoggedInAtom } from "../../../recoilsState";
 
 import "./navBar.css";
 
@@ -11,6 +13,7 @@ function NavBar() {
     
   const {pathname} = useLocation()
   const history = useHistory()
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom)
 
   return (
     <div className="mainWrapper">
@@ -42,7 +45,10 @@ function NavBar() {
             </NavLink>
             <br />
             
-             <a href="#" className="logout_button" onClick={()=> logOut().then(()=> history.push(routes.LoginScreen))}> <li >logout</li> </a>
+             <a href="#" className="logout_button" onClick={()=> logOut().then(()=>{ 
+               history.push(routes.LoginScreen)
+               setIsLoggedIn(false)
+               })}> <li >logout</li> </a>
           
           </div>
         </div>
