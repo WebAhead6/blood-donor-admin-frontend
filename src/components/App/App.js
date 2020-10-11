@@ -23,6 +23,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom)
   useEffect(() => {
     checkLogin().then(checkLogedIn => setIsLoggedIn(checkLogedIn))
+    const intervalId = setInterval(() => {
+      checkLogin().then(checkLogedIn => setIsLoggedIn(checkLogedIn))
+    }, 1000*5) 
+    return ()=> clearInterval(intervalId)
   }, []);
   if (!isLoggedIn) return <div className="App">
      <Switch>
