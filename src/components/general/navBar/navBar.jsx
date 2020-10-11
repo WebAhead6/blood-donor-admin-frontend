@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter,NavLink } from "react-router-dom";
 import {useLocation} from "react-router-dom"
 import { routes } from "../../../constants";
+import { logOut } from "../../../utils/login";
 
 import "./navBar.css";
 
@@ -41,9 +42,9 @@ function NavBar() {
               <li >changePassword</li>
             </NavLink>
             <br />
-            <NavLink className="logout_button" to={routes.logout}>
-              <li>logout</li>
-            </NavLink>
+            
+             <a href="#" className="logout_button" onClick={()=> logOut()}> <li >logout</li> </a>
+          
           </div>
         </div>
       </div>
