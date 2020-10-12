@@ -2,7 +2,13 @@ import React from "react";
 import "./bloodTypeFilter.css";
 import { Checkbox, CheckboxGroup } from "rsuite";
 
-function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
+function BloodTypeFilter({
+  valueArray = [],
+  onChange,
+  canEdit,
+  member,
+  onMemberChange,
+}) {
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   const handleCheckAll = (value) => {
@@ -13,11 +19,17 @@ function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
   const handleChange = (value = []) => {
     if (canEdit) onChange(value);
   };
-  console.log(options.length === valueArray.length);
+
+  const handleMemberChange = () => {
+    if (canEdit) onMemberChange(!member);
+  };
+
   return (
     <div className="bloodTypeFilter">
       <fieldset>
         <legend>blood type filter</legend>
+        <Checkbox onChange={handleMemberChange}>Member</Checkbox>
+
         <CheckboxGroup
           value={options.length === valueArray.length ? ["all"] : []}
           onChange={handleCheckAll}
@@ -28,7 +40,6 @@ function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
             </Checkbox>,
           ]}
         </CheckboxGroup>
-
         <CheckboxGroup
           className="bloodTypeFilter-checkBox"
           inline
