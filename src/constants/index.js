@@ -1,7 +1,7 @@
 export const routes = {
     home: "/",
     alertScreen: "/alert",
-    ChangePassowrdScreen: "/changepassowrd",
+    ChangePassowrdScreen: "/changepassword",
     GoalsScreen: "/goals",
     HomeMenuScreen: "/homeMenu",
     LocationsScreen: "/locations",
