@@ -1,2 +1,3 @@
 import { newAlertData, getApiAlertsAtom } from "./newAlerts";
-export { newAlertData, getApiAlertsAtom };
+import {isLoggedInAtom} from "./isLoggedIn"
+export { newAlertData, getApiAlertsAtom,isLoggedInAtom };

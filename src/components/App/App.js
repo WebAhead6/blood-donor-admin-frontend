@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 // import constants
 import {routes} from "../../constants"
@@ -13,10 +13,33 @@ import LocationsScreen from "../screens/locationsScreen";
 import LoginScreen from "../screens/loginScreen";
 import ResetPasswordScreen from "../screens/resetPasswordScreen";
 import HomeMenuScreen from "../screens/homeMenuScreen";
+import { useRecoilState } from "recoil";
+import { isLoggedInAtom } from "../../recoilsState";
+import {isLoggedIn as checkLogin}  from "../../utils/login"
 
 import "./App.css";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom)
+  useEffect(() => {
+    checkLogin().then(checkLogedIn => setIsLoggedIn(checkLogedIn))
+    const intervalId = setInterval(() => {
+      checkLogin().then(checkLogedIn => setIsLoggedIn(checkLogedIn))
+    }, 1000*5) 
+    return ()=> clearInterval(intervalId)
+  }, []);
+  if (!isLoggedIn) return <div className="App">
+     <Switch>
+         <Route exact path={routes.ResetPasswordScreen}>
+            <ResetPasswordScreen />
+          </Route>
+
+          <Route  path={routes.home}>
+          <LoginScreen/>
+          </Route>
+            
+    </Switch>
+    </div>
   return (
       <div className="App">
         <NavBar />
@@ -45,13 +68,9 @@ function App() {
             <LocationsScreen />
           </Route>
 
-          <Route exact path={routes.LoginScreen}>
-            <LoginScreen />
-          </Route>
+         
 
-          <Route exact path={routes.ResetPasswordScreen}>
-            <ResetPasswordScreen />
-          </Route>
+         
         </Switch>
       </div>
   );
