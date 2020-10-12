@@ -7,8 +7,10 @@ import { deleteAlert, editAlert, getAlertsData } from "../../../utils/alert";
 
 function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
   const [isEdit, setIsEdit] = React.useState(true);
+
   const [canEdit, setCanEdit] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
+
 
   const [, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [localState, setLocalState] = React.useState({
@@ -21,7 +23,9 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
     await editAlert(id, localState);
     const data = await getAlertsData();
     setGetAlert(data);
+
     setIsOpen(false);
+
   };
 
   const handleDelete = async () => {
@@ -32,6 +36,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
   const handleCancel = async () => {
     setLocalState({ textArray, bloodType, addedDate });
     setIsEdit(true);
+
     setCanEdit(false);
   };
   const handleEdit = () => {
@@ -41,25 +46,36 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
   };
   const handleBarClick = () => {
     setIsOpen(!isOpen);
+
+
   };
   return (
     <div>
       <EditEntryBar
         isEdit={isEdit}
+
         onEditClick={handleEdit}
+
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
         title={localState.textArray[2].title}
+
         onInputClick={handleBarClick}
       />
       {isOpen ? (
+
+
+ 
         <AlertEntryContent
           textArray={localState.textArray}
           addedDate={localState.addedDate}
           bloodType={localState.bloodType}
           setData={setLocalState}
+
           canEdit={canEdit}
+
+
         />
       ) : (
         ""
