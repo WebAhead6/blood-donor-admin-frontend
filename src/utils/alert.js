@@ -1,7 +1,8 @@
 import backEndApiCall from "./backEndApiCall";
-export const addAlert = async (bloodType, entryTextArray) => {
+export const addAlert = async (bloodType, member, entryTextArray) => {
   return await backEndApiCall("POST", "/alerts", {
-    bloodType: bloodType.value || [],
+    bloodType: bloodType || [],
+    member: member,
     title: {
       he: entryTextArray[0].title,
       ar: entryTextArray[1].title,
