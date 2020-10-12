@@ -4,6 +4,8 @@ export const newAlertData = atom({
   key: "TextAlerts",
   default: {
     bloodType: [],
+
+    member: false,
     textArray: [
       {
         language: "Hebrew",
