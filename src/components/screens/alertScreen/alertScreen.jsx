@@ -52,17 +52,16 @@ function AlertScreen() {
       ) : (
         ""
       )}
-      {getAlert.map(
-        ({ textArray, bloodType = [], member = [], id, addedDate }) => (
-          <AlertEntryContainer
-            key={id}
-            id={id}
-            bloodType={bloodType}
-            textArray={textArray}
-            addedDate={addedDate}
-          />
-        )
-      )}
+      {getAlert.map(({ textArray, bloodType = [], id, addedDate, member }) => (
+        <AlertEntryContainer
+          key={id}
+          id={id}
+          member={member}
+          bloodType={bloodType}
+          textArray={textArray}
+          addedDate={addedDate}
+        />
+      ))}
     </div>
   );
 }
