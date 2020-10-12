@@ -12,34 +12,43 @@ function BloodTypeFilter({
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   const handleCheckAll = (value) => {
-    if (canEdit)
-      if (value.length) onChange(options);
+    if (canEdit) {
+      if (value) onChange(options);
       else onChange([]);
+    }
   };
   const handleChange = (value = []) => {
     if (canEdit) onChange(value);
   };
 
-  const handleMemberChange = () => {
-    if (canEdit) onMemberChange(!member);
+  const handleMemberChange = (value) => {
+    if (canEdit) onMemberChange(!value);
   };
+  console.log(member);
 
   return (
     <div className="bloodTypeFilter">
       <fieldset>
         <legend>blood type filter</legend>
-        <Checkbox onChange={handleMemberChange}>Member</Checkbox>
 
-        <CheckboxGroup
-          value={options.length === valueArray.length ? ["all"] : []}
-          onChange={handleCheckAll}
-        >
-          {[
-            <Checkbox key="all" value="all">
-              Check all
-            </Checkbox>,
-          ]}
-        </CheckboxGroup>
+        <label>
+          <input
+            type="checkbox"
+            checked={member}
+            onChange={(e) => handleMemberChange(e.target.value == "true")}
+          />
+          member
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            checked={options.length === valueArray.length}
+            onChange={(e) => handleCheckAll(e.target.value === "true")}
+          />
+          Check all
+        </label>
+
         <CheckboxGroup
           className="bloodTypeFilter-checkBox"
           inline
