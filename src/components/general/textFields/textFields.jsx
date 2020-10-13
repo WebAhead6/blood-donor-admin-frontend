@@ -14,7 +14,7 @@ function TextFields({
       <fieldset>
         <legend>{legend}</legend>
 
-        <label for="title">title</label>
+        <label>title</label>
         <br />
         <input
           required

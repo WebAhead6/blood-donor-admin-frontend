@@ -8,6 +8,8 @@ const checkResponse = (response) => {
 const backEndApiCall = (method, route, body = {}) => {
   return fetch(`${process.env.REACT_APP_API}${route}`, {
     method: method,
+    mode: "cors",
+    credentials: 'include',
     headers: {
       "Content-Type": "application/json",
     },
