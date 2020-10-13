@@ -59,7 +59,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
-        title={localState.textArray[2].title}
+        title={localState?.textArray?.[2]?.title}
 
         onInputClick={handleBarClick}
       />
