@@ -22,7 +22,7 @@ function BloodTypeFilter({
   };
 
   const handleMemberChange = (value) => {
-    if (canEdit) onMemberChange(!value);
+    if (canEdit) onMemberChange(!member);
   };
 
   return (
