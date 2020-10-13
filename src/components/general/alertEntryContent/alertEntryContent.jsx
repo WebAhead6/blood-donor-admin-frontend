@@ -43,7 +43,7 @@ function AlertEntryContent({
           onTitleChange={(e) => onChange(index, "title", e.target.value)}
         />
       ))}
-    </div>
+    </div> 
   );
 }
 export default AlertEntryContent;

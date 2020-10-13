@@ -26,7 +26,7 @@ var newMenuItemAtom = (0, _recoil.atom)({
 });
 exports.newMenuItemAtom = newMenuItemAtom;
 var getMenuItemAtom = (0, _recoil.atom)({
-  key: "newAlert",
+  key: "NewItem",
   default: []
 });
 exports.getMenuItemAtom = getMenuItemAtom;

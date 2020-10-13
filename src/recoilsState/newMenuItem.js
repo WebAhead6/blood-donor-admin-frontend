@@ -27,7 +27,7 @@ export const newMenuItemAtom = atom({
 
 
 export const getMenuItemAtom = atom({
-  key: "newAlert",
+  key: "NewItem",
   default: [],
 });
 
