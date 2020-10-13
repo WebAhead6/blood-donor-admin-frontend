@@ -13,8 +13,8 @@ function BloodTypeFilter({
 
   const handleCheckAll = (value) => {
     if (canEdit) {
-      if (value) onChange(options);
-      else onChange([]);
+      if (options.length === valueArray.length) onChange([]);
+      else onChange(options);
     }
   };
   const handleChange = (value = []) => {
@@ -24,7 +24,6 @@ function BloodTypeFilter({
   const handleMemberChange = (value) => {
     if (canEdit) onMemberChange(!value);
   };
-  console.log(member);
 
   return (
     <div className="bloodTypeFilter">
