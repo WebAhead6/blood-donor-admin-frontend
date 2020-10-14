@@ -19,7 +19,8 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
     member,
   });
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     await editAlert(id, localState);
     const data = await getAlertsData();
     setGetAlert(data);
@@ -48,13 +49,12 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
+    <form onSubmit={handleSave}>
       <EditEntryBar
         isEdit={isEdit}
         onEditClick={handleEdit}
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
-        onSaveClick={handleSave}
         title={localState?.textArray?.[2]?.title}
         onInputClick={handleBarClick}
       />
@@ -70,7 +70,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
       ) : (
         ""
       )}
-    </div>
+    </form>
   );
 }
 

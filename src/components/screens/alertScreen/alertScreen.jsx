@@ -22,7 +22,8 @@ function AlertScreen() {
       .catch(() => {});
   }, []);
 
-  const handleSaveClick = async () => {
+  const handleSaveClick = async (e) => {
+    e.preventDefault();
     await addAlert(
       newEntryData.bloodType,
       newEntryData.member,
@@ -35,24 +36,25 @@ function AlertScreen() {
 
   return (
     <div className="barStyle">
-      <AddEntryBar
-        name={"Alerts"}
-        isAdd={isAdd}
-        onAddClick={() => setIsAdd(false)}
-        onCancelClick={() => setIsAdd(true)}
-        onSaveClick={handleSaveClick}
-      />
-      {!isAdd ? (
-        <AlertEntryContent
-          textArray={newEntryData.textArray}
-          setData={setNewEntryData}
-          bloodType={newEntryData.bloodType}
-          member={newEntryData.member}
-          canEdit={true}
+      <form onSubmit={handleSaveClick}>
+        <AddEntryBar
+          name={"Alerts"}
+          isAdd={isAdd}
+          onAddClick={() => setIsAdd(false)}
+          onCancelClick={() => setIsAdd(true)}
         />
-      ) : (
-        ""
-      )}
+        {!isAdd ? (
+          <AlertEntryContent
+            textArray={newEntryData.textArray}
+            setData={setNewEntryData}
+            bloodType={newEntryData.bloodType}
+            member={newEntryData.member}
+            canEdit={true}
+          />
+        ) : (
+          ""
+        )}
+      </form>
       {getAlert.map(({ textArray, bloodType = [], id, addedDate, member }) => (
         <AlertEntryContainer
           key={id}
