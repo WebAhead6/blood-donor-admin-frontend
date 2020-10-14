@@ -34,7 +34,7 @@ function AlertScreen() {
   };
 
   return (
-    <div className="alertScreen">
+    <div className="barStyle">
       <AddEntryBar
         name={"Alerts"}
         isAdd={isAdd}
