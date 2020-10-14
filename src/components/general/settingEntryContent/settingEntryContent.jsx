@@ -1,7 +1,7 @@
 import React from "react";
 import "./settingEntryContent.css";
 import TextField from "../textFields";
-import SettimgContextType from "../settingContextType";
+import SettingContextType from "../settingContextType";
 function SettingEntryContent({ textArray = [], canEdit }) {
   return (
     <div className="barStyle">
@@ -15,7 +15,7 @@ function SettingEntryContent({ textArray = [], canEdit }) {
           onTitleChange={(e) => e.target.value}
         />
       ))}
-      <SettimgContextType />
+      <SettingContextType />
     </div>
   );
 }
