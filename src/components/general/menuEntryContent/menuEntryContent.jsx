@@ -7,37 +7,37 @@ function MenuEntryContent({
   textArray = [],
   setData,
   canEdit,
-  redirectionLink
+  redirectionLink,
 }) {
+  const onTitleChange = (index, value) => {
+    const arrClone = [...textArray];
+    const changedData = { ...textArray[index], title: value };
+    arrClone[index] = changedData;
 
-  const onTitleChange = ( value) => {//FIXME:
-      setData({   });
+    setData({redirectionLink, textArray: arrClone });
   };
   const onredirectionLinkChange = (value) => {
-    setData({ redirectionLink: value });
-    console.log(value);
+    setData({textArray, redirectionLink: value });
   };
+
+
 
   return (
     <div className="menuEntryContent">
-
       <RedirectionLink
         canEdit={canEdit}
         redirectionLink={redirectionLink}
-
-        onredirectionLinkChange={(e) => onredirectionLinkChange( e.target.value)}
-
+        onredirectionLinkChange={(e) => onredirectionLinkChange(e.target.value)}
       />
 
-      {textArray.map(({ language,  title }, index) => (
+      {textArray.map(({ language, title }, index) => (
         <TextFields
+          showSubTitle={false}
           key={language}
           legend={language}
           title={title}
-
           canEdit={canEdit}
-
-          onTitleChange={(e) => onTitleChange( e.target.value)}
+          onTitleChange={(e) => onTitleChange(index, e.target.value)}
         />
       ))}
     </div>

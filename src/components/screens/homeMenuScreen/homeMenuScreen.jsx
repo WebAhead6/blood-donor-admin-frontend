@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import React, { Fragment, useEffect } from "react";
+import { useRecoilState,useResetRecoilState } from "recoil";
 import { newMenuItemAtom, getMenuItemAtom } from "../../../recoilsState";
 //import components
 import HomeMenuItemContainer from "../../general/homeMenuItemContainer";
 import MenuEntryContent from "../../general/menuEntryContent";
-
-import AddMenuBar from "../../general/addMenuBar";
+import AddEntryBar from "../../general/addEntryBar";
 //
 import "./homeMenuScreen.css";
 //
@@ -17,6 +16,8 @@ function HomeMenuScreen() {
   // const [getAlert, setGetAlert] = useRecoilState(getNewAlertsAtom);
   const [getMenuItem, setGetMenuItem] = useRecoilState(getMenuItemAtom);
   const [isAdd, setIsAdd] = React.useState(true);
+  const resetnewMenuItemAtom = useResetRecoilState(newMenuItemAtom);
+
 
   React.useEffect(() => {
     getMenuItemsData()
@@ -27,60 +28,53 @@ function HomeMenuScreen() {
       .catch(() => {});
   }, []);
 
-  const handleSaveClick = async () => {
-    await addItem(newMenuItem);
+  const handleSaveClick = async (e) => {
+    e.preventDefault();
+    await addItem(newMenuItem.redirectionLink,newMenuItem.textArray); //FIXME: BEFOR IT WAS ONLY newMenuItem
     const newItems = await getMenuItemsData();
     setGetMenuItem(newItems);
     setIsAdd(true);
+    resetnewMenuItemAtom();
+
   };
 
-  return (
-    <div className="homeMenuScreen">
-      <AddMenuBar
-        isAdd={isAdd}
-        onAddClick={() => setIsAdd(false)}
-        onCancelClick={() => setIsAdd(true)}
-        onSaveClick={handleSaveClick}
-      />
-      {!isAdd ? (
-        <MenuEntryContent
-        redirectionLink={newMenuItem.redirectionLink}
-          setData={setNewMenuItem}
-          canEdit={true}
-        />
-      ) : (
-        ""
-      )}
-      {getMenuItem.map(({ redirectionLink,id}) =>
-           <HomeMenuItemContainer
-           redirectionLink={redirectionLink}
-           key={id}
-           id={id}
 
-           />
-      )}
+  const  handleCancelClick=() =>{
+     setIsAdd(true)
+     resetnewMenuItemAtom();
+
+  }
+
+  return (
+    <div className="barStyle">
+      <form onSubmit={handleSaveClick}>
+        <AddEntryBar
+          name={"Home Menu"}
+          isAdd={isAdd}
+          onAddClick={() => setIsAdd(false)}
+          onCancelClick={handleCancelClick}
+        />
+        {!isAdd ? (
+          <MenuEntryContent
+            redirectionLink={newMenuItem.redirectionLink}
+            textArray={newMenuItem.textArray}
+            setData={setNewMenuItem}
+            canEdit={true}
+          />
+        ) : (
+          ""
+        )}
+      </form>
+      {getMenuItem.map(({textArray, redirectionLink, id }) => (
+        <HomeMenuItemContainer
+          redirectionLink={redirectionLink}
+          textArray={textArray}
+          key={id}
+          id={id}
+        />
+      ))}
     </div>
   );
 }
 
 export default HomeMenuScreen;
-
-// {
-//   src:"",
-//   redirectionLink:"",
-//   textArray:
-// [
-//       {
-//     language: "Hebrew",
-//     title: "",
-//   },
-//   {
-//     language: "Arabic",
-//     title: "",
-//   },
-//   {
-//     language: "English",
-//     title: "",
-//   },
-// ]
-// }
