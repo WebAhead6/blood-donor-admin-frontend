@@ -4,22 +4,24 @@ import MenuEntryContent from "../menuEntryContent";
 import { useRecoilState } from "recoil";
 import { getMenuItemAtom } from "../../../recoilsState";
 import { getMenuItemsData, deleteItem ,editItem } from "../../../utils/menuItems";
-import { deleteAlert, editAlert, getAlertsData } from "../../../utils/alert";
 
-function HomeMenuItemContainer({ id, redirectionLink }) {
+function HomeMenuItemContainer({ id, redirectionLink,textArray }) {
   const [isEdit, setIsEdit] = React.useState(true);
 
   const [canEdit, setCanEdit] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const [, setGetMenuItem] = useRecoilState(getMenuItemAtom);
-  const [localState, setLocalState] = React.useState({redirectionLink});
+  const [localState, setLocalState] = React.useState({redirectionLink,textArray});
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     await editItem(id, localState);
     const data = await getMenuItemsData();
     setGetMenuItem(data);
     setIsOpen(false);
+    setIsEdit(true);
+
   };
 
   const handleDelete = async () => {
@@ -28,7 +30,7 @@ function HomeMenuItemContainer({ id, redirectionLink }) {
     setGetMenuItem(data);
   };
   const handleCancel = async () => {
-    setLocalState({redirectionLink});
+    setLocalState({redirectionLink , textArray});
     setIsEdit(true);
     setCanEdit(false);
   };
@@ -42,25 +44,28 @@ function HomeMenuItemContainer({ id, redirectionLink }) {
   };
 
   return (
-    <div>
+    <form onSubmit={handleSave}>
       <EditEntryBar
         isEdit={isEdit}
         onEditClick={handleEdit}
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
-        onSaveClick={handleSave}
+        title={localState?.textArray?.[2]?.title}
         onInputClick={handleBarClick}
+
       />
       {isOpen ? (
         <MenuEntryContent
           redirectionLink={localState.redirectionLink}
           setData={setLocalState}
           canEdit={canEdit}
+          textArray={localState.textArray}
+
         />
       ) : (
         ""
       )}
-    </div>
+    </form>
   );
 }
 

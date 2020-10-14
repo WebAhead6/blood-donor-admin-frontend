@@ -8,7 +8,7 @@ function RedirectionLink({ redirectionLink, onredirectionLinkChange, canEdit }) 
         <label for="title">redirection link</label>
         <br />
         <input
-          required
+          
           className="textFields-input"
           type="text"
           name="title"
