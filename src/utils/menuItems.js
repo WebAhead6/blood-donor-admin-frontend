@@ -1,9 +1,14 @@
 import backEndApiCall from "./backEndApiCall";
 
-export const addItem = async (dataa) => {
+export const addItem = async (redirectionLink,textArray) => {
+  console.log("redirectionLinkffffftextArray",redirectionLink,textArray);
   return await backEndApiCall("POST", "/homeMenu", {
-    redirectionLink:dataa.redirectionLink,
-   
+    redirectionLink:redirectionLink,
+      title: {
+      he: textArray[0].title,
+      ar: textArray[1].title,
+      en: textArray[2].title,
+    },
     
   });
 };
@@ -43,7 +48,17 @@ export const editItem = async (ItemId, newValue) => {
 
 
 
-
+// export const addItem = async (dataa) => {
+//   return await backEndApiCall("POST", "/homeMenu", {
+//     redirectionLink:dataa.redirectionLink,
+//       title: {
+//       he: dataa[0].title,
+//       ar: dataa[1].title,
+//       en: dataa[2].title,
+//     },
+    
+//   });
+// };
 
 
 
