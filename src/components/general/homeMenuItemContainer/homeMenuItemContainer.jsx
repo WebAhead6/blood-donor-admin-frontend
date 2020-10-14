@@ -1,42 +1,35 @@
 import React, { Fragment } from "react";
 import EditEntryBar from "../editEntryBar";
-import AlertEntryContent from "../alertEntryContent";
+import MenuEntryContent from "../menuEntryContent";
 import { useRecoilState } from "recoil";
-import { getApiAlertsAtom } from "../../../recoilsState";
+import { getMenuItemAtom } from "../../../recoilsState";
+import { getMenuItemsData, deleteItem ,editItem } from "../../../utils/menuItems";
 import { deleteAlert, editAlert, getAlertsData } from "../../../utils/alert";
 
-function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
+function HomeMenuItemContainer({ id, redirectionLink }) {
   const [isEdit, setIsEdit] = React.useState(true);
 
   const [canEdit, setCanEdit] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const [, setGetAlert] = useRecoilState(getApiAlertsAtom);
-  const [localState, setLocalState] = React.useState({
-    textArray,
-    bloodType,
-    addedDate,
-    member,
-  });
-  console.log(addedDate);
-  const handleSave = async () => {
-    await editAlert(id, localState);
-    const data = await getAlertsData();
-    setGetAlert(data);
+  const [, setGetMenuItem] = useRecoilState(getMenuItemAtom);
+  const [localState, setLocalState] = React.useState({redirectionLink});
 
+  const handleSave = async () => {
+    await editItem(id, localState);
+    const data = await getMenuItemsData();
+    setGetMenuItem(data);
     setIsOpen(false);
-    setIsEdit(true);
   };
 
   const handleDelete = async () => {
-    await deleteAlert(id);
-    const data = await getAlertsData();
-    setGetAlert(data);
+    await deleteItem(id);
+    const data = await getMenuItemsData();
+    setGetMenuItem(data);
   };
   const handleCancel = async () => {
-    setLocalState({ textArray, bloodType, addedDate, member });
+    setLocalState({redirectionLink});
     setIsEdit(true);
-
     setCanEdit(false);
   };
   const handleEdit = () => {
@@ -47,6 +40,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
   const handleBarClick = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
       <EditEntryBar
@@ -55,18 +49,11 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
-
-        title={localState?.textArray?.[2]?.title}
-
-
         onInputClick={handleBarClick}
       />
       {isOpen ? (
-        <AlertEntryContent
-          textArray={localState.textArray}
-          addedDate={localState.addedDate}
-          bloodType={localState.bloodType}
-          member={localState.member}
+        <MenuEntryContent
+          redirectionLink={localState.redirectionLink}
           setData={setLocalState}
           canEdit={canEdit}
         />
@@ -77,4 +64,4 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
   );
 }
 
-export default AlertEntryContainer;
+export default HomeMenuItemContainer;

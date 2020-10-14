@@ -1,0 +1,26 @@
+.addMenuBar-container {
+  background-color: #384373;
+  padding-left: 5px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: aliceblue;
+}
+.addMenuBar-addBtn,
+.addMenuBar-saveBtn {
+  background-color: #048a81;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+.addMenuBar-btns {
+  height: 100%;
+  border: none;
+}
+.addMenuBar-cancelBtn {
+  background-color: #c9b747;
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
