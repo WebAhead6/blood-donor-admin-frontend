@@ -25,6 +25,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
     setGetAlert(data);
 
     setIsOpen(false);
+    setIsEdit(true);
   };
 
   const handleDelete = async () => {
