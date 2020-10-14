@@ -1,9 +1,14 @@
 import React from "react";
 import "./settingContextType.css";
+import UrlContextType from "../../general/urlContextType";
+import RichTextContextType from "../../general/richTextContextType";
+import FileContextType from "../../general/fileContextType";
 
 function SettingContextType() {
   const [contextType, setContextType] = React.useState("");
-  const handleChange = (event) => setContextType(event.target.value);
+  const handleChange = (event) => {
+    setContextType(event.target.value);
+  };
   return (
     <form className="settingContextType">
       <p>Please select your context type</p>
@@ -32,6 +37,15 @@ function SettingContextType() {
         onChange={handleChange}
       />
       <label>Rich Text</label>
+      {contextType === "url" ? (
+        <UrlContextType />
+      ) : contextType === "file" ? (
+        <FileContextType />
+      ) : contextType === "rich-text" ? (
+        <RichTextContextType />
+      ) : (
+        ""
+      )}
     </form>
   );
 }

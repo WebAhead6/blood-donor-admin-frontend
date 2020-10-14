@@ -1,10 +1,15 @@
-import React from "react";
-// import RichTextInput from "ra-input-rich-text";
+import React, { useState } from "react";
+import RichTextEditor from "react-rte";
 
 function RichTextContextType() {
+  const [value, setValue] = useState(RichTextEditor.createEmptyValue());
   return (
     <div>
-      {/* <RichTextInput source="body" validation={{ required: true }} /> */}
+      <RichTextEditor
+        value={value}
+
+        // onChange={this.onChange}
+      />
     </div>
   );
 }
