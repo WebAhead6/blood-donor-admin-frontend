@@ -15,10 +15,23 @@ export const addItem = async (redirectionLink,textArray) => {
 export const getMenuItemsData = async () => {
   const { data } = await backEndApiCall("GET", "/api/homeMenu");
 
-  return data.map(({src, redirectionLink ,id}) => ({
+  return data.map(({title, redirectionLink ,id}) => ({
     id,
     redirectionLink,
-    src,
+    textArray: [
+      {
+        language: "Hebrew",
+        title: title.he,
+      },
+      {
+        language: "Arabic",
+        title: title.ar,
+      },
+      {
+        language: "English",
+        title: title.en,
+      },
+    ],
     
   }));
 };
