@@ -7,7 +7,6 @@ const EditEntryBar = function ({
   onCancelClick,
   title,
   onDeleteClick,
-  onSaveClick,
 
   onInputClick,
 }) {
@@ -18,20 +17,29 @@ const EditEntryBar = function ({
       </div>
 
       {isEdit ? (
-        <button onClick={onEditClick} className="aditEntryBar-addBtn">
-          Edit
-        </button>
+        <input
+          type="button"
+          value="Edit"
+          onClick={onEditClick}
+          className="aditEntryBar-addBtn"
+        />
       ) : (
         <div className="aditEntryBar-btns">
-          <button className="aditEntryBar-saveBtn" onClick={onSaveClick}>
-            Save
-          </button>
-          <button className="aditEntryBar-deleteBtn" onClick={onDeleteClick}>
-            Delete
-          </button>
-          <button className="aditEntryBar-cancelBtn" onClick={onCancelClick}>
-            Cancel
-          </button>
+          <input type="submit" value="Save" className="aditEntryBar-saveBtn" />
+
+          <input
+            type="button"
+            value="Delete"
+            className="aditEntryBar-deleteBtn"
+            onClick={onDeleteClick}
+          />
+
+          <input
+            type="button"
+            value="Cancel"
+            className="aditEntryBar-cancelBtn"
+            onClick={onCancelClick}
+          />
         </div>
       )}
     </div>
