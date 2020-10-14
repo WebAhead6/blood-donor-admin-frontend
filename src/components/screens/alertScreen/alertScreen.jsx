@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import { newAlertData, getApiAlertsAtom } from "../../../recoilsState";
 import AddEntryBar from "../../general/addEntryBar";
 
@@ -13,6 +13,8 @@ function AlertScreen() {
   const [newEntryData, setNewEntryData] = useRecoilState(newAlertData);
   const [getAlert, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [isAdd, setIsAdd] = React.useState(true);
+  const resetnewEntryData = useResetRecoilState(newAlertData);
+
 
   React.useEffect(() => {
     getAlertsData()
@@ -27,12 +29,23 @@ function AlertScreen() {
     await addAlert(
       newEntryData.bloodType,
       newEntryData.member,
-      newEntryData.textArray
+      newEntryData.textArray,
     );
+
     const newAlerts = await getAlertsData();
     setGetAlert(newAlerts);
     setIsAdd(true);
+    resetnewEntryData()
+
   };
+
+
+  const  handleCancelClick=() =>{
+    setIsAdd(true)
+    resetnewEntryData()
+
+ }
+
 
   return (
     <div className="barStyle">
@@ -41,7 +54,7 @@ function AlertScreen() {
           name={"Alerts"}
           isAdd={isAdd}
           onAddClick={() => setIsAdd(false)}
-          onCancelClick={() => setIsAdd(true)}
+          onCancelClick={handleCancelClick}
         />
         {!isAdd ? (
           <AlertEntryContent
