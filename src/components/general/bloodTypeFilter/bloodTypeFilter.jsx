@@ -2,35 +2,51 @@ import React from "react";
 import "./bloodTypeFilter.css";
 import { Checkbox, CheckboxGroup } from "rsuite";
 
-
-function BloodTypeFilter({ valueArray = [], onChange, canEdit }) {
+function BloodTypeFilter({
+  valueArray = [],
+  onChange,
+  canEdit,
+  member,
+  onMemberChange,
+}) {
   const options = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
   const handleCheckAll = (value) => {
-    if (canEdit)
-      if (value.length) onChange(options);
-      else onChange([]);
+    if (canEdit) {
+      if (options.length === valueArray.length) onChange([]);
+      else onChange(options);
+    }
   };
   const handleChange = (value = []) => {
     if (canEdit) onChange(value);
-
-
   };
-  console.log(options.length === valueArray.length);
+
+  const handleMemberChange = (value) => {
+    if (canEdit) onMemberChange(!member);
+  };
+
   return (
     <div className="bloodTypeFilter">
       <fieldset>
         <legend>blood type filter</legend>
-        <CheckboxGroup
-          value={options.length === valueArray.length ? ["all"] : []}
-          onChange={handleCheckAll}
-        >
-          {[
-            <Checkbox key="all" value="all">
-              Check all
-            </Checkbox>,
-          ]}
-        </CheckboxGroup>
+
+        <label>
+          <input
+            type="checkbox"
+            checked={member}
+            onChange={(e) => handleMemberChange(e.target.value == "true")}
+          />
+          member
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            checked={options.length === valueArray.length}
+            onChange={(e) => handleCheckAll(e.target.value === "true")}
+          />
+          Check all
+        </label>
 
         <CheckboxGroup
           className="bloodTypeFilter-checkBox"

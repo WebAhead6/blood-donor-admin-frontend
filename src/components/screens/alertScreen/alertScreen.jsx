@@ -23,7 +23,11 @@ function AlertScreen() {
   }, []);
 
   const handleSaveClick = async () => {
-    await addAlert(newEntryData.bloodType, newEntryData.textArray);
+    await addAlert(
+      newEntryData.bloodType,
+      newEntryData.member,
+      newEntryData.textArray
+    );
     const newAlerts = await getAlertsData();
     setGetAlert(newAlerts);
     setIsAdd(true);
@@ -42,17 +46,17 @@ function AlertScreen() {
           textArray={newEntryData.textArray}
           setData={setNewEntryData}
           bloodType={newEntryData.bloodType}
-
+          member={newEntryData.member}
           canEdit={true}
-
         />
       ) : (
         ""
       )}
-      {getAlert.map(({ textArray, bloodType = [], id, addedDate }) => (
+      {getAlert.map(({ textArray, bloodType = [], id, addedDate, member }) => (
         <AlertEntryContainer
           key={id}
           id={id}
+          member={member}
           bloodType={bloodType}
           textArray={textArray}
           addedDate={addedDate}

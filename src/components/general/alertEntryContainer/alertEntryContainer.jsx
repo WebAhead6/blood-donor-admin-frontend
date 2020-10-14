@@ -5,18 +5,18 @@ import { useRecoilState } from "recoil";
 import { getApiAlertsAtom } from "../../../recoilsState";
 import { deleteAlert, editAlert, getAlertsData } from "../../../utils/alert";
 
-function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
+function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
   const [isEdit, setIsEdit] = React.useState(true);
 
   const [canEdit, setCanEdit] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-
 
   const [, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [localState, setLocalState] = React.useState({
     textArray,
     bloodType,
     addedDate,
+    member,
   });
   console.log(addedDate);
   const handleSave = async () => {
@@ -25,7 +25,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
     setGetAlert(data);
 
     setIsOpen(false);
-
+    setIsEdit(true);
   };
 
   const handleDelete = async () => {
@@ -34,7 +34,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
     setGetAlert(data);
   };
   const handleCancel = async () => {
-    setLocalState({ textArray, bloodType, addedDate });
+    setLocalState({ textArray, bloodType, addedDate, member });
     setIsEdit(true);
 
     setCanEdit(false);
@@ -46,36 +46,29 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate }) {
   };
   const handleBarClick = () => {
     setIsOpen(!isOpen);
-
-
   };
   return (
     <div>
       <EditEntryBar
         isEdit={isEdit}
-
         onEditClick={handleEdit}
-
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
+
         title={localState?.textArray?.[2]?.title}
+
 
         onInputClick={handleBarClick}
       />
       {isOpen ? (
-
-
- 
         <AlertEntryContent
           textArray={localState.textArray}
           addedDate={localState.addedDate}
           bloodType={localState.bloodType}
+          member={localState.member}
           setData={setLocalState}
-
           canEdit={canEdit}
-
-
         />
       ) : (
         ""

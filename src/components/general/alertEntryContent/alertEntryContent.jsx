@@ -8,6 +8,7 @@ function AlertEntryContent({
   setData,
   bloodType,
   addedDate,
+  member,
   canEdit,
 }) {
 
@@ -15,10 +16,16 @@ function AlertEntryContent({
     const arrClone = [...textArray];
     const changedData = { ...textArray[index], [fieldName]: value };
     arrClone[index] = changedData;
-    setData({ bloodType, textArray: arrClone, addedDate });
+    setData({ bloodType, member, textArray: arrClone, addedDate });
   };
   const onBloodTypeChange = (value) => {
-    setData({ bloodType: value, textArray, addedDate });
+    setData({ bloodType: value, member, textArray, addedDate });
+  };
+
+  const onMemberChange = (value) => {
+    console.log(value, bloodType);
+
+    setData({ bloodType, member: value, textArray, addedDate });
   };
 
   return (
@@ -27,6 +34,8 @@ function AlertEntryContent({
       <BloodTypeFilter
         canEdit={canEdit}
         valueArray={bloodType}
+        member={member}
+        onMemberChange={onMemberChange}
         onChange={onBloodTypeChange}
       />
 

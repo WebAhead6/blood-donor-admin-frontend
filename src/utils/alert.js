@@ -1,7 +1,8 @@
 import backEndApiCall from "./backEndApiCall";
-export const addAlert = async (bloodType, entryTextArray) => {
+export const addAlert = async (bloodType, member, entryTextArray) => {
   return await backEndApiCall("POST", "/alerts", {
-    bloodType: bloodType.value || [],
+    bloodType: bloodType || [],
+    member: member,
     title: {
       he: entryTextArray[0].title,
       ar: entryTextArray[1].title,
@@ -17,10 +18,11 @@ export const addAlert = async (bloodType, entryTextArray) => {
 export const getAlertsData = async () => {
   const { data } = await backEndApiCall("GET", "/api/alerts");
 
-  return data.map(({ context, title, bloodType, id, addedDate }) => ({
+  return data.map(({ context, title, bloodType, id, addedDate, member }) => ({
     id,
     addedDate,
     bloodType,
+    member,
     textArray: [
       {
         language: "Hebrew",
@@ -48,6 +50,7 @@ export const deleteAlert = async (alertId) => {
 export const editAlert = async (alertId, newValue) => {
   await backEndApiCall("POST", "/alerts/" + alertId, {
     addedDate: newValue.addedDate,
+    member: newValue.member,
     bloodType: newValue.bloodType || [],
     title: {
       he: newValue.textArray[0].title,
