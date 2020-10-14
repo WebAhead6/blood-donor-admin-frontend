@@ -18,7 +18,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
     addedDate,
     member,
   });
-  console.log(addedDate);
+
   const handleSave = async () => {
     await editAlert(id, localState);
     const data = await getAlertsData();
@@ -55,10 +55,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
         onCancelClick={handleCancel}
         onDeleteClick={handleDelete}
         onSaveClick={handleSave}
-
         title={localState?.textArray?.[2]?.title}
-
-
         onInputClick={handleBarClick}
       />
       {isOpen ? (
