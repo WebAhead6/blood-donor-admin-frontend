@@ -1,3 +1,4 @@
 import { newAlertData, getApiAlertsAtom } from "./newAlerts";
 import {isLoggedInAtom} from "./isLoggedIn"
-export { newAlertData, getApiAlertsAtom,isLoggedInAtom };
+import {newMenuItemAtom, getMenuItemAtom} from "./newMenuItem"
+export { newAlertData, getApiAlertsAtom,isLoggedInAtom, newMenuItemAtom, getMenuItemAtom };
