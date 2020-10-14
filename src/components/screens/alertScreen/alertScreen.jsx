@@ -36,6 +36,7 @@ function AlertScreen() {
   return (
     <div className="alertScreen">
       <AddEntryBar
+        name={"Alerts"}
         isAdd={isAdd}
         onAddClick={() => setIsAdd(false)}
         onCancelClick={() => setIsAdd(true)}

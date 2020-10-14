@@ -7,6 +7,7 @@ const AddEntryBar = function ({
   onAddClick,
   onCancelClick,
   onSaveClick,
+  name,
 }) {
   const handleAddClick = () => {
     if (onAddClick) onAddClick();
@@ -21,7 +22,7 @@ const AddEntryBar = function ({
   };
   return (
     <div className="addEntryBar-container">
-      Alerts
+      {name}
       {isAdd ? (
         <button onClick={handleAddClick} className="addEntryBar-addBtn">
           add
