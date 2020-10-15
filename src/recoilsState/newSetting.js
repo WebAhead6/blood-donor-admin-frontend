@@ -21,3 +21,8 @@ export const newSettingAtom = atom({
     ],
   },
 });
+
+export const getGeneralSettingAtom = atom({
+  key: "generalSetting",
+  default: [],
+});
