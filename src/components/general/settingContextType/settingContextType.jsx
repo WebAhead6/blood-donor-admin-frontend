@@ -16,57 +16,55 @@ function SettingContextType({
     if (canEdit) onContextTypeChange(value);
   };
   return (
-    <>
-      <form className="settingContextType">
-        <p>Please select your context type</p>
-        <input
-          type="radio"
-          value="url"
-          name="contextType"
-          required
-          checked={contextType === "url"}
-          onChange={(e) => handleContextTypeChange(e.target.value)}
+    <div className="settingContextType">
+      <p>Please select your context type</p>
+      <input
+        type="radio"
+        value="url"
+        name="contextType"
+        required
+        checked={contextType === "url"}
+        onChange={(e) => handleContextTypeChange(e.target.value)}
+      />
+      <label>URL</label>
+      <input
+        type="radio"
+        name="contextType"
+        value="file"
+        checked={contextType === "file"}
+        onChange={(e) => handleContextTypeChange(e.target.value)}
+      />
+      <label>File</label>
+      <input
+        type="radio"
+        name="contextType"
+        value="rich-text"
+        checked={contextType === "rich-text"}
+        onChange={(e) => handleContextTypeChange(e.target.value)}
+      />
+      <label>Rich Text</label>
+      {contextType === "url" ? (
+        <UrlContextType
+          onContextChange={onContextChange}
+          context={context}
+          canEdit={canEdit}
         />
-        <label>URL</label>
-        <input
-          type="radio"
-          name="contextType"
-          value="file"
-          checked={contextType === "file"}
-          onChange={(e) => handleContextTypeChange(e.target.value)}
+      ) : contextType === "file" ? (
+        <FileContextType
+          onContextChange={onContextChange}
+          context={context}
+          canEdit={canEdit}
         />
-        <label>File</label>
-        <input
-          type="radio"
-          name="contextType"
-          value="rich-text"
-          checked={contextType === "rich-text"}
-          onChange={(e) => handleContextTypeChange(e.target.value)}
+      ) : contextType === "rich-text" ? (
+        <RichTextContextType
+          onContextChange={onContextChange}
+          context={context}
+          canEdit={canEdit}
         />
-        <label>Rich Text</label>
-        {contextType === "url" ? (
-          <UrlContextType
-            onContextChange={onContextChange}
-            context={context}
-            canEdit={canEdit}
-          />
-        ) : contextType === "file" ? (
-          <FileContextType
-            onContextChange={onContextChange}
-            context={context}
-            canEdit={canEdit}
-          />
-        ) : contextType === "rich-text" ? (
-          <RichTextContextType
-            onContextChange={onContextChange}
-            context={context}
-            canEdit={canEdit}
-          />
-        ) : (
-          ""
-        )}
-      </form>
-    </>
+      ) : (
+        ""
+      )}
+    </div>
   );
 }
 
