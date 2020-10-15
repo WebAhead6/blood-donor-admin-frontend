@@ -9,7 +9,7 @@ function RedirectionLink({ redirectionLink, onredirectionLinkChange, canEdit }) 
         <br />
         <input
           type="url"
-          placeholder="http//:url only"
+          placeholder="http//:example.com"
           className="textFields-input"
           name="title"
           value={redirectionLink}
