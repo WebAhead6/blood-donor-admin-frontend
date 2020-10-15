@@ -52,13 +52,22 @@ var getMenuItemsData = function getMenuItemsData() {
           _ref = _context2.sent;
           data = _ref.data;
           return _context2.abrupt("return", data.map(function (_ref2) {
-            var src = _ref2.src,
+            var title = _ref2.title,
                 redirectionLink = _ref2.redirectionLink,
                 id = _ref2.id;
             return {
               id: id,
               redirectionLink: redirectionLink,
-              src: src
+              textArray: [{
+                language: "Hebrew",
+                title: title.he
+              }, {
+                language: "Arabic",
+                title: title.ar
+              }, {
+                language: "English",
+                title: title.en
+              }]
             };
           }));
 
