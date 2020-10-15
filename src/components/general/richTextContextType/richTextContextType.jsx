@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import RichTextEditor from "react-rte";
 
-function RichTextContextType({ onContextChange, context, canEdit }) {
-  const [value, setValue] = useState(RichTextEditor.createEmptyValue());
-  const handleContextChange = (value) => {
-    if (canEdit) onContextChange(value);
+function RichTextContextType({
+  onContextChange,
+  context = "<p></p>",
+  canEdit,
+}) {
+  const richContext = RichTextEditor.createValueFromString(context, "html");
+  const handleContextChange = (newValue) => {
+    if (canEdit) onContextChange(newValue.toString("html"));
+    console.log(newValue.toString("html"));
   };
 
   return (
     <div>
-      <RichTextEditor value={context} onChange={handleContextChange(value)} />
+      <RichTextEditor value={richContext} onChange={handleContextChange} />
     </div>
   );
 }
