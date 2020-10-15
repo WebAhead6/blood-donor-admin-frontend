@@ -15,7 +15,6 @@ function AlertScreen() {
   const [isAdd, setIsAdd] = React.useState(true);
   const resetnewEntryData = useResetRecoilState(newAlertData);
 
-
   React.useEffect(() => {
     getAlertsData()
       .then((data) => {
@@ -29,23 +28,19 @@ function AlertScreen() {
     await addAlert(
       newEntryData.bloodType,
       newEntryData.member,
-      newEntryData.textArray,
+      newEntryData.textArray
     );
 
     const newAlerts = await getAlertsData();
     setGetAlert(newAlerts);
     setIsAdd(true);
-    resetnewEntryData()
-
+    resetnewEntryData();
   };
 
-
-  const  handleCancelClick=() =>{
-    setIsAdd(true)
-    resetnewEntryData()
-
- }
-
+  const handleCancelClick = () => {
+    setIsAdd(true);
+    resetnewEntryData();
+  };
 
   return (
     <div className="barStyle">
