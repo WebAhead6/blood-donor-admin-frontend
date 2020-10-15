@@ -21,8 +21,7 @@ function SettingEntryContent({
   };
 
   const onContextTypeChange = (value) => {
-    setData({ textArray, context, contextType: value });
-    console.log(setData);
+    setData({ textArray, context: "", contextType: value });
   };
 
   return (
