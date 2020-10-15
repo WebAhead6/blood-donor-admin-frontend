@@ -1,8 +1,15 @@
 .fileContextType {
   margin: 20px;
 }
-
-.fileContextType-input::-webkit-file-upload-button {
+.fileContextType-input {
+  display: none;
+}
+.fileContextType-hidden {
+  max-width: 0;
+  max-height: 0;
+  opacity: 0;
+}
+/* .fileContextType-input::-webkit-file-upload-button {
   border: 2px solid #048a81;
   padding: 0.2em 0.4em;
   border-radius: 0.2em;
@@ -25,4 +32,4 @@
 .fileContextType-input::file-selector-button:hover {
   background-color: #cdaa53;
   border: 2px solid #cdaa53;
-}
+} */
