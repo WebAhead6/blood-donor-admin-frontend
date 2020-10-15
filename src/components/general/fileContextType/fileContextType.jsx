@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./fileContextType.css";
 
 function getBase64(file) {
@@ -14,24 +14,39 @@ function getBase64(file) {
 }
 
 function FileContextType({ onContextChange, context, canEdit }) {
+  const filefieldRef = useRef();
+  const handleUploadClick = () => {
+    filefieldRef.current.click();
+  };
   const handleContextChange = (value) => {
     if (canEdit) getBase64(value).then((res) => onContextChange(res));
   };
   return (
     <div className="fileContextType">
-      <a href={context} download="file.pdf">
-        download file
-      </a>
+      {context && (
+        <a href={context} download="file.pdf">
+          <input type="button" value="download file" />
+        </a>
+      )}
       {canEdit ? (
         <>
-          <label> Upload file </label>
           <input
+            type="button"
+            value="upload file"
+            onClick={handleUploadClick}
+          />
+          <input
+            className="fileContextType-hidden"
+            type="text"
+            value={context}
+            required
+          />
+          <input
+            ref={filefieldRef}
             className="fileContextType-input"
             type="file"
             name="file"
             accept=".pdf"
-            required
-            // value={context}
             aria-label="File browser example"
             onChange={(e) => handleContextChange(e.target.files[0])}
           ></input>
