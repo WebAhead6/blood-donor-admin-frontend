@@ -1,7 +1,6 @@
 import backEndApiCall from "./backEndApiCall";
 
 export const addItem = async (redirectionLink,textArray) => {
-  console.log("redirectionLinkffffftextArray",redirectionLink,textArray);
   return await backEndApiCall("POST", "/homeMenu", {
     redirectionLink:redirectionLink,
       title: {
@@ -46,7 +45,11 @@ export const editItem = async (ItemId, newValue) => {
   console.log(ItemId, newValue);
   await backEndApiCall("POST", "/homeMenu/" + ItemId, {
     redirectionLink: newValue.redirectionLink,
-
+    title: {
+      he: newValue.textArray[0].title,
+      ar: newValue.textArray[1].title,
+      en: newValue.textArray[2].title,
+    },
   });
 };
 

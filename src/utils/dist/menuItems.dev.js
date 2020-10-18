@@ -14,8 +14,7 @@ var addItem = function addItem(redirectionLink, textArray) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          console.log("redirectionLinkffffftextArray", redirectionLink, textArray);
-          _context.next = 3;
+          _context.next = 2;
           return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu", {
             redirectionLink: redirectionLink,
             title: {
@@ -25,10 +24,10 @@ var addItem = function addItem(redirectionLink, textArray) {
             }
           }));
 
-        case 3:
+        case 2:
           return _context.abrupt("return", _context.sent);
 
-        case 4:
+        case 3:
         case "end":
           return _context.stop();
       }
@@ -107,7 +106,12 @@ var editItem = function editItem(ItemId, newValue) {
           console.log(ItemId, newValue);
           _context4.next = 3;
           return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu/" + ItemId, {
-            redirectionLink: newValue.redirectionLink
+            redirectionLink: newValue.redirectionLink,
+            title: {
+              he: newValue.textArray[0].title,
+              ar: newValue.textArray[1].title,
+              en: newValue.textArray[2].title
+            }
           }));
 
         case 3:

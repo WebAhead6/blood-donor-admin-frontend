@@ -17,6 +17,7 @@ function HomeMenuItemContainer({ id, redirectionLink,textArray }) {
   const handleSave = async (e) => {
     e.preventDefault();
     await editItem(id, localState);
+  
     const data = await getMenuItemsData();
     setGetMenuItem(data);
     setIsOpen(false);
