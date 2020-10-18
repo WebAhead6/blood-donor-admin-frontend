@@ -1,7 +1,7 @@
 import React from "react";
 import "./changePassword.css";
 
-const ChangePassword = function ({password,confirmPassword,handleClick,onPasswordChange,onConfirmPasswordChange,error}) {
+const ChangePassword = function ({password="",confirmPassword="",handleClick,onPasswordChange,onConfirmPasswordChange,error}) {
 
   
 
