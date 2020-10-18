@@ -12,6 +12,7 @@ function RedirectionLink({ redirectionLink, onredirectionLinkChange, canEdit }) 
           placeholder="http//:example.com"
           className="textFields-input"
           name="title"
+          required
           value={redirectionLink}
           onChange={(e) => canEdit && onredirectionLinkChange(e)}
         />
