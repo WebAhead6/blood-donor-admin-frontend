@@ -22,8 +22,6 @@ function AlertEntryContent({
   };
 
   const onMemberChange = (value) => {
-    console.log(value, bloodType);
-
     setData({ bloodType, member: value, textArray, addedDate });
   };
 

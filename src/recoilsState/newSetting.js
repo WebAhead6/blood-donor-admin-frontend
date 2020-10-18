@@ -3,6 +3,8 @@ import { atom } from "recoil";
 export const newSettingAtom = atom({
   key: "Setting",
   default: {
+    context: "",
+    contextType: "url",
     textArray: [
       {
         language: "Hebrew",
@@ -18,4 +20,9 @@ export const newSettingAtom = atom({
       },
     ],
   },
+});
+
+export const getGeneralSettingAtom = atom({
+  key: "generalSetting",
+  default: [],
 });
