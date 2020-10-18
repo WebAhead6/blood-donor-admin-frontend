@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import { newAlertData, getApiAlertsAtom } from "../../../recoilsState";
 import AddEntryBar from "../../general/addEntryBar";
 
@@ -13,6 +13,8 @@ function AlertScreen() {
   const [newEntryData, setNewEntryData] = useRecoilState(newAlertData);
   const [getAlert, setGetAlert] = useRecoilState(getApiAlertsAtom);
   const [isAdd, setIsAdd] = React.useState(true);
+  const resetnewEntryData = useResetRecoilState(newAlertData);
+
 
   React.useEffect(() => {
     getAlertsData()
@@ -22,47 +24,60 @@ function AlertScreen() {
       .catch(() => {});
   }, []);
 
-  const handleSaveClick = async () => {
+  const handleSaveClick = async (e) => {
+    e.preventDefault();
     await addAlert(
       newEntryData.bloodType,
       newEntryData.member,
-      newEntryData.textArray
+      newEntryData.textArray,
     );
+
     const newAlerts = await getAlertsData();
     setGetAlert(newAlerts);
     setIsAdd(true);
+    resetnewEntryData()
+
   };
 
+
+  const  handleCancelClick=() =>{
+    setIsAdd(true)
+    resetnewEntryData()
+
+ }
+
+
   return (
-    <div className="alertScreen">
-      <AddEntryBar
-        isAdd={isAdd}
-        onAddClick={() => setIsAdd(false)}
-        onCancelClick={() => setIsAdd(true)}
-        onSaveClick={handleSaveClick}
-      />
-      {!isAdd ? (
-        <AlertEntryContent
-          textArray={newEntryData.textArray}
-          setData={setNewEntryData}
-          bloodType={newEntryData.bloodType}
-          member={newEntryData.member}
-          canEdit={true}
+    <div className="barStyle">
+      <form onSubmit={handleSaveClick}>
+        <AddEntryBar
+          name={"Alerts"}
+          isAdd={isAdd}
+          onAddClick={() => setIsAdd(false)}
+          onCancelClick={handleCancelClick}
         />
-      ) : (
-        ""
-      )}
-      {getAlert.map(
-        ({ textArray, bloodType = [], member = [], id, addedDate }) => (
-          <AlertEntryContainer
-            key={id}
-            id={id}
-            bloodType={bloodType}
-            textArray={textArray}
-            addedDate={addedDate}
+        {!isAdd ? (
+          <AlertEntryContent
+            textArray={newEntryData.textArray}
+            setData={setNewEntryData}
+            bloodType={newEntryData.bloodType}
+            member={newEntryData.member}
+            canEdit={true}
           />
-        )
-      )}
+        ) : (
+          ""
+        )}
+      </form>
+      {getAlert.map(({ textArray, bloodType = [], id, addedDate, member }) => (
+        <AlertEntryContainer
+          key={id}
+          id={id}
+          member={member}
+          bloodType={bloodType}
+          textArray={textArray}
+          addedDate={addedDate}
+        />
+      ))}
     </div>
   );
 }

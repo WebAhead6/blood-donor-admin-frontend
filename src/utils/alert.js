@@ -18,10 +18,11 @@ export const addAlert = async (bloodType, member, entryTextArray) => {
 export const getAlertsData = async () => {
   const { data } = await backEndApiCall("GET", "/api/alerts");
 
-  return data.map(({ context, title, bloodType, id, addedDate }) => ({
+  return data.map(({ context, title, bloodType, id, addedDate, member }) => ({
     id,
     addedDate,
     bloodType,
+    member,
     textArray: [
       {
         language: "Hebrew",
@@ -49,6 +50,7 @@ export const deleteAlert = async (alertId) => {
 export const editAlert = async (alertId, newValue) => {
   await backEndApiCall("POST", "/alerts/" + alertId, {
     addedDate: newValue.addedDate,
+    member: newValue.member,
     bloodType: newValue.bloodType || [],
     title: {
       he: newValue.textArray[0].title,

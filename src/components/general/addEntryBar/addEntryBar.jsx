@@ -6,7 +6,8 @@ const AddEntryBar = function ({
   isAdd,
   onAddClick,
   onCancelClick,
-  onSaveClick,
+
+  name,
 }) {
   const handleAddClick = () => {
     if (onAddClick) onAddClick();
@@ -16,24 +17,26 @@ const AddEntryBar = function ({
     if (onCancelClick) onCancelClick();
   };
 
-  const handleSaveClick = () => {
-    if (onSaveClick) onSaveClick();
-  };
   return (
     <div className="addEntryBar-container">
-      Alerts
+      {name}
       {isAdd ? (
-        <button onClick={handleAddClick} className="addEntryBar-addBtn">
-          add
-        </button>
+        <input
+          type="button"
+          value="add"
+          onClick={handleAddClick}
+          className="addEntryBar-addBtn"
+        />
       ) : (
         <div className="addEntryBar-btns">
-          <button className="addEntryBar-saveBtn" onClick={handleSaveClick}>
-            Save
-          </button>
-          <button className="addEntryBar-cancelBtn" onClick={handleCancelClick}>
-            Cancel
-          </button>
+          <input type="submit" value="Save" className="addEntryBar-saveBtn" />
+
+          <input
+            type="button"
+            value="Cancel"
+            className="addEntryBar-cancelBtn"
+            onClick={handleCancelClick}
+          />
         </div>
       )}
     </div>

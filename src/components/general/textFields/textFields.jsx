@@ -8,6 +8,7 @@ function TextFields({
   onTitleChange,
   onContextChange,
   canEdit,
+  showSubTitle,
 }) {
   return (
     <div className="textFields">
@@ -25,16 +26,23 @@ function TextFields({
           onChange={(e) => canEdit && onTitleChange(e)}
         />
         <br />
-        <label>sub-title</label>
-        <br />
-        <input
-          required
-          className="textFields-input"
-          type="text"
-          name="title"
-          value={context}
-          onChange={(e) => canEdit && onContextChange(e)}
-        />
+        {showSubTitle ? (
+          <>
+            {" "}
+            <label>sub-title</label>
+            <br />
+            <input
+              required
+              className="textFields-input"
+              type="text"
+              name="title"
+              value={context}
+              onChange={(e) => canEdit && onContextChange(e)}
+            />
+          </>
+        ) : (
+          ""
+        )}
       </fieldset>
     </div>
   );
