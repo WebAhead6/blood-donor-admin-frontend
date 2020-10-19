@@ -1,4 +1,5 @@
 export const routes = {
+
   home: "/",
   alertScreen: "/alert",
   ChangePassowrdScreen: "/changepassowrd",
@@ -10,3 +11,4 @@ export const routes = {
   logout: "/logout",
   GeneralSettingScreen: "/generalSetting",
 };
+
