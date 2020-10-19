@@ -1,36 +1,26 @@
-
-import React from "react"
+import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-
-export default function DragDropWrapper({children,onDragEnd}){
-
-
-
-return(
-
+export default function DragDropWrapper({ children, onDragEnd }) {
+  return (
     <DragDropContext onDragEnd={onDragEnd}>
-    <Droppable droppableId="homeMenu">
-      {(provided, snapshot) => (
-        <div
+      <Droppable droppableId="homeMenu">
+        {(provided, snapshot) => (
+          <div
           ref={provided.innerRef}
-          style={{
-            backgroundColor: snapshot.isDraggingOver ? "blue" : "grey",
-          }}
+            style={{
+              backgroundColor: snapshot.isDraggingOver ? "blue" : "grey",
+            }}
+            {...provided.droppableProps}
+          >
 
-          {...provided.droppableProps}
-        >
-           {provided.placeholder}
-
-
-           {children}
+            {children}
+            {provided.placeholder}
 
 
-
-           </div>
-           )}
-           </Droppable>
-      </DragDropContext>
-)
-
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
+  );
 }

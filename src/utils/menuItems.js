@@ -14,7 +14,8 @@ export const addItem = async (redirectionLink,textArray) => {
 export const getMenuItemsData = async () => {
   const { data } = await backEndApiCall("GET", "/api/homeMenu");
 
-  return data.map(({title, redirectionLink ,id}) => ({
+  return data.map(({indexOrder,title, redirectionLink ,id}) => ({
+    indexOrder,
     id,
     redirectionLink,
     textArray: [
@@ -45,6 +46,7 @@ export const editItem = async (ItemId, newValue) => {
   console.log(ItemId, newValue);
   await backEndApiCall("POST", "/homeMenu/" + ItemId, {
     redirectionLink: newValue.redirectionLink,
+    indexOrder: newValue.indexOrder,
     title: {
       he: newValue.textArray[0].title,
       ar: newValue.textArray[1].title,
