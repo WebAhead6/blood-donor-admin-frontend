@@ -7,7 +7,7 @@ exports.editItem = exports.deleteItem = exports.getMenuItemsData = exports.addIt
 
 var _backEndApiCall = _interopRequireDefault(require("./backEndApiCall"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var addItem = function addItem(redirectionLink, textArray) {
   return regeneratorRuntime.async(function addItem$(_context) {
@@ -15,7 +15,7 @@ var addItem = function addItem(redirectionLink, textArray) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap((0, _backEndApiCall.default)("POST", "/homeMenu", {
+          return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu", {
             redirectionLink: redirectionLink,
             title: {
               he: textArray[0].title,
@@ -45,7 +45,7 @@ var getMenuItemsData = function getMenuItemsData() {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return regeneratorRuntime.awrap((0, _backEndApiCall.default)("GET", "/api/homeMenu"));
+          return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("GET", "/api/homeMenu"));
 
         case 2:
           _ref = _context2.sent;
@@ -88,7 +88,7 @@ var deleteItem = function deleteItem(ItemId) {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return regeneratorRuntime.awrap((0, _backEndApiCall.default)("POST", "/homeMenu/delete/".concat(ItemId)));
+          return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu/delete/".concat(ItemId)));
 
         case 2:
         case "end":
@@ -107,7 +107,7 @@ var editItem = function editItem(ItemId, newValue) {
         case 0:
           console.log(ItemId, newValue);
           _context4.next = 3;
-          return regeneratorRuntime.awrap((0, _backEndApiCall.default)("POST", "/homeMenu/" + ItemId, {
+          return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu/" + ItemId, {
             redirectionLink: newValue.redirectionLink,
             indexOrder: newValue.indexOrder,
             title: {
