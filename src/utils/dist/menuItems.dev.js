@@ -51,10 +51,12 @@ var getMenuItemsData = function getMenuItemsData() {
           _ref = _context2.sent;
           data = _ref.data;
           return _context2.abrupt("return", data.map(function (_ref2) {
-            var title = _ref2.title,
+            var indexOrder = _ref2.indexOrder,
+                title = _ref2.title,
                 redirectionLink = _ref2.redirectionLink,
                 id = _ref2.id;
             return {
+              indexOrder: indexOrder,
               id: id,
               redirectionLink: redirectionLink,
               textArray: [{
@@ -107,6 +109,7 @@ var editItem = function editItem(ItemId, newValue) {
           _context4.next = 3;
           return regeneratorRuntime.awrap((0, _backEndApiCall["default"])("POST", "/homeMenu/" + ItemId, {
             redirectionLink: newValue.redirectionLink,
+            indexOrder: newValue.indexOrder,
             title: {
               he: newValue.textArray[0].title,
               ar: newValue.textArray[1].title,

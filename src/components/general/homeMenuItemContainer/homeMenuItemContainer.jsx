@@ -5,14 +5,14 @@ import { useRecoilState } from "recoil";
 import { getMenuItemAtom } from "../../../recoilsState";
 import { getMenuItemsData, deleteItem ,editItem } from "../../../utils/menuItems";
 
-function HomeMenuItemContainer({ id, redirectionLink,textArray }) {
+function HomeMenuItemContainer({ id, redirectionLink,textArray,indexOrder }) {
   const [isEdit, setIsEdit] = React.useState(true);
 
   const [canEdit, setCanEdit] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
 
   const [, setGetMenuItem] = useRecoilState(getMenuItemAtom);
-  const [localState, setLocalState] = React.useState({redirectionLink,textArray});
+  const [localState, setLocalState] = React.useState({redirectionLink,textArray,indexOrder});
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ function HomeMenuItemContainer({ id, redirectionLink,textArray }) {
     setGetMenuItem(data);
   };
   const handleCancel = async () => {
-    setLocalState({redirectionLink , textArray});
+    setLocalState({redirectionLink , textArray, indexOrder});
     setIsEdit(true);
     setCanEdit(false);
   };

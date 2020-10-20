@@ -9,7 +9,7 @@ var _recoil = require("recoil");
 
 var newMenuItemAtom = (0, _recoil.atom)({
   key: "MenuItem",
-  default: {
+  "default": {
     src: "",
     redirectionLink: "",
     textArray: [{
@@ -27,6 +27,6 @@ var newMenuItemAtom = (0, _recoil.atom)({
 exports.newMenuItemAtom = newMenuItemAtom;
 var getMenuItemAtom = (0, _recoil.atom)({
   key: "NewItem",
-  default: []
+  "default": []
 });
 exports.getMenuItemAtom = getMenuItemAtom;
