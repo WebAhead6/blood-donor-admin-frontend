@@ -8,12 +8,14 @@ import AddEntryBar from "../../general/addEntryBar";
 //
 import "./homeMenuScreen.css";
 //
-import { addItem, getMenuItemsData, editItem } from "../../../utils/menuItems";
+import {
+  addItem,
+  getMenuItemsData,
+  reorderItem,
+} from "../../../utils/menuItems";
 //
 import { Draggable } from "react-beautiful-dnd";
 import DragDropWrapper from "../../general/dragDropWrapper";
-
-
 
 function HomeMenuScreen() {
   //const [newEntryData, setNewEntryData] = useRecoilState(newAlertTextAtom);
@@ -48,20 +50,15 @@ function HomeMenuScreen() {
 
   const handleDragAndDrop = async (result) => {
     // the only one that is required{ destination, source, draggableId }
-   // if (!result.destination) return
-    const items = await Array.from(getMenuItem)
-    console.log(items)
-    const  [reorderdItems] = items.splice(result.source.index, 1)
-    items.splice(result.destination.index,0,reorderdItems)
-    setGetMenuItem(items)// FIXME: WE MAYBE NEED A LOCAL STATE TO HOLED THE CHANGAE
-console.log(items);
-    //await editItem(items.id ,items );
-
-    
-
+    if (!result.destination) return;
+    const items = await Array.from(getMenuItem);
+    console.log(items);
+    const [reorderdItems] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderdItems);
+    const orderItem = items.map(({ id }) => id);
+    setGetMenuItem(items);
+    await reorderItem(orderItem);
   };
-
-
 
   return (
     <div className="barStyle">
@@ -84,25 +81,27 @@ console.log(items);
         )}
       </form>
 
-      <DragDropWrapper onDragEnd={handleDragAndDrop} >
-        {getMenuItem.map(({ indexOrder,textArray, redirectionLink, id }, index) => (
-          <Draggable draggableId={id} index={index} key={id}>
-            {(provided) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-              >
-                <HomeMenuItemContainer
-                  redirectionLink={redirectionLink}
-                  textArray={textArray}
-                  id={id}
-                  indexOrder={indexOrder}
-                />
-              </div>
-            )}
-          </Draggable>
-        ))}
+      <DragDropWrapper onDragEnd={handleDragAndDrop}>
+        {getMenuItem.map(
+          ({ indexOrder, textArray, redirectionLink, id }, index) => (
+            <Draggable draggableId={id} index={index} key={id}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  <HomeMenuItemContainer
+                    redirectionLink={redirectionLink}
+                    textArray={textArray}
+                    id={id}
+                    indexOrder={indexOrder}
+                  />
+                </div>
+              )}
+            </Draggable>
+          )
+        )}
       </DragDropWrapper>
     </div>
   );
