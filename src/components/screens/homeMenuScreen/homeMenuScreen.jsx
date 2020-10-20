@@ -16,11 +16,10 @@ import {
 //
 import { Draggable } from "react-beautiful-dnd";
 import DragDropWrapper from "../../general/dragDropWrapper";
+import reorderAfterDrap from "../../../utils/reorderAfterDrop";
 
 function HomeMenuScreen() {
-  //const [newEntryData, setNewEntryData] = useRecoilState(newAlertTextAtom);
   const [newMenuItem, setNewMenuItem] = useRecoilState(newMenuItemAtom);
-  // const [getAlert, setGetAlert] = useRecoilState(getNewAlertsAtom);
   const [getMenuItem, setGetMenuItem] = useRecoilState(getMenuItemAtom);
   const [isAdd, setIsAdd] = React.useState(true);
   const resetnewMenuItemAtom = useResetRecoilState(newMenuItemAtom);
@@ -49,12 +48,11 @@ function HomeMenuScreen() {
   };
 
   const handleDragAndDrop = async (result) => {
-    // the only one that is required{ destination, source, draggableId }
-    if (!result.destination) return;
-    const items = await Array.from(getMenuItem);
-    console.log(items);
-    const [reorderdItems] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderdItems);
+    const items = reorderAfterDrap(
+      getMenuItem,
+      result?.source?.index,
+      result?.destination?.index
+    );
     const orderItem = items.map(({ id }) => id);
     setGetMenuItem(items);
     await reorderItem(orderItem);
