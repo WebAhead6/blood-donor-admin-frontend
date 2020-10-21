@@ -1,17 +1,6 @@
 import React, { useRef } from "react";
+import getBase64 from "../../../utils/getBase64";
 import "./fileContextType.css";
-
-function getBase64(file) {
-  console.log(file);
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      console.log(reader.result);
-      resolve(reader.result);
-    });
-    reader.readAsDataURL(file);
-  });
-}
 
 function FileContextType({ onContextChange, context, canEdit }) {
   const filefieldRef = useRef();
