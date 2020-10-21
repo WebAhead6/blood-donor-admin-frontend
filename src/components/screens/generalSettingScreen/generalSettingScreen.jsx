@@ -3,6 +3,9 @@ import { useRecoilState, useResetRecoilState } from "recoil";
 import AddEntryBar from "../../general/addEntryBar";
 import SettingEntryContent from "../../general/settingEntryContent";
 import GeneralSettingEntryContainer from "../../general/generalSettingEntryContainer";
+import { Draggable } from "react-beautiful-dnd";
+import DragDropWrapper from "../../general/dragDropWrapper";
+import reorderAfterDrap from "../../../utils/reorderAfterDrop";
 
 import {
   newSettingAtom,
@@ -11,6 +14,7 @@ import {
 import {
   addGeneralSetting,
   getGeneralSettingData,
+  reorderGeneralSetting,
 } from "../../../utils/generalSetting";
 
 function GeneralSettingScreen() {
@@ -28,6 +32,17 @@ function GeneralSettingScreen() {
       })
       .catch(() => {});
   }, []);
+
+  const handleDragAndDrop = async (result) => {
+    const items = reorderAfterDrap(
+      getGeneralSetting,
+      result?.source?.index,
+      result?.destination?.index
+    );
+    const orderItem = items.map(({ id }) => id);
+    setGetGeneralSetting(items);
+    await reorderGeneralSetting(orderItem);
+  };
 
   const handleSaveClick = async (e) => {
     e.preventDefault();
@@ -69,15 +84,30 @@ function GeneralSettingScreen() {
           ""
         )}
       </form>
-      {getGeneralSetting.map(({ id, textArray, contextType, context }) => (
-        <GeneralSettingEntryContainer
-          key={id}
-          id={id}
-          context={context}
-          contextType={contextType}
-          textArray={textArray}
-        />
-      ))}
+      <DragDropWrapper onDragEnd={handleDragAndDrop}>
+        {getGeneralSetting.map(
+          ({ id, textArray, contextType, context, indexOrder }, index) => (
+            <Draggable draggableId={id} index={index} key={id}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  <GeneralSettingEntryContainer
+                    key={id}
+                    id={id}
+                    context={context}
+                    contextType={contextType}
+                    textArray={textArray}
+                    indexOrder={indexOrder}
+                  />
+                </div>
+              )}
+            </Draggable>
+          )
+        )}
+      </DragDropWrapper>
     </div>
   );
 }

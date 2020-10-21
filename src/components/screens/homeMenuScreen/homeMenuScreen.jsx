@@ -28,7 +28,6 @@ function HomeMenuScreen() {
     getMenuItemsData()
       .then((data) => {
         setGetMenuItem(data);
-        console.log(data);
       })
       .catch(() => {});
   }, []);
@@ -53,6 +52,7 @@ function HomeMenuScreen() {
       result?.source?.index,
       result?.destination?.index
     );
+    console.log(items);
     const orderItem = items.map(({ id }) => id);
     setGetMenuItem(items);
     await reorderItem(orderItem);
