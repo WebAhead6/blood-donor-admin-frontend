@@ -6,21 +6,32 @@
   justify-content: space-between;
   align-items: center;
   color: aliceblue;
+
+  border-radius: 8px;
 }
-.addEntryBar-addBtn,
-.addEntryBar-saveBtn {
-  background-color: #048a81;
+.addEntryBar-addBtn {
+  background-color: var(--color-blue);
   width: 70px;
   height: 100%;
   color: aliceblue;
+  border-radius: 8px;
 }
 .addEntryBar-btns {
   height: 100%;
   border: none;
 }
-.addEntryBar-cancelBtn {
-  background-color: #c9b747;
+
+.addEntryBar-saveBtn {
+  background-color: var(--color-grey);
   width: 70px;
   height: 100%;
   color: aliceblue;
+  border-radius: 8px;
+}
+.addEntryBar-cancelBtn {
+  background-color: var(--color-red);
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+  border-radius: 8px;
 }

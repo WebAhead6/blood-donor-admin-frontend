@@ -7,7 +7,7 @@ function LocationsButton(props) {
       <a href={props.href} target="_blank" download>
         <button className="button">{props.title}</button>
       </a>
-      <div class="space"></div>
+      <div className="space"></div>
     </div>
   );
 }

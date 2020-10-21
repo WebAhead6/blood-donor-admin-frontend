@@ -1,28 +1,27 @@
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import "./goalsBar.css";
 import { newCurrentAtom, newGoalAtom } from "../../../recoilsState/newGoal";
 import { useRecoilState } from "recoil";
 import { getGoal, updateGoal } from "../../../utils/goals";
 
-
-const GoalsBar = function () {
+const GoalsBar = function() {
   const [current, setCurrent] = useRecoilState(newCurrentAtom);
   const [goal, setGoal] = useRecoilState(newGoalAtom);
 
-  
-  useEffect(async () => {
-    try {
-      const newGoal = await getGoal();
-    console.log('hadi',newGoal.goal);
-    setCurrent(newGoal.current);
-    setGoal(newGoal.goal);
-
-
-           } catch (e) {
+  useEffect(() => {
+    const apiCall = async () => {
+      try {
+        const newGoal = await getGoal();
+        console.log("hadi", newGoal.goal);
+        setCurrent(newGoal.current);
+        setGoal(newGoal.goal);
+      } catch (e) {
         console.error(e);
-    }
-}, []);
+      }
+    };
 
+    apiCall();
+  }, []);
 
   const onCurrentChange = (value) => {
     setCurrent(value);
@@ -32,14 +31,10 @@ const GoalsBar = function () {
     setGoal(value);
   };
 
-  
-
-
-
   const handleSaveClick = (e) => {
     (async () => {
-      e.preventDefault()
-      await updateGoal(current ,goal);
+      e.preventDefault();
+      await updateGoal(current, goal);
       const newGoal = await getGoal();
       console.log(newGoal);
     })();
@@ -47,10 +42,10 @@ const GoalsBar = function () {
 
   return (
     <div className="goals_form_container">
-      <div class="goals_form_title">
+      <div className="goals_form_title">
         <span>Goal</span>
       </div>
-      <div class="goals_form">
+      <div className="goals_form">
         <form onSubmit={handleSaveClick}>
           <label for="Current">
             Current
@@ -74,8 +69,7 @@ const GoalsBar = function () {
               onChange={(e) => onGoalChange(e.target.value)}
             />
           </label>
-          <input type="submit" value="Save" className="goals_form_saveButton"  />
-            
+          <input type="submit" value="Save" className="goals_form_saveButton" />
         </form>
       </div>
     </div>

@@ -9,7 +9,7 @@
 }
 .addMenuBar-addBtn,
 .addMenuBar-saveBtn {
-  background-color: #048a81;
+  background-color: var(--color-blue);
   width: 70px;
   height: 100%;
   color: aliceblue;
@@ -19,7 +19,7 @@
   border: none;
 }
 .addMenuBar-cancelBtn {
-  background-color: #c9b747;
+  background-color: var(--color-grey);
   width: 70px;
   height: 100%;
   color: aliceblue;

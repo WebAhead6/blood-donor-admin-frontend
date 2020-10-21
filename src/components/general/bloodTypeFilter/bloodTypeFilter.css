@@ -1,10 +1,27 @@
 .bloodTypeFilter fieldset {
   background-color: var(--color-entry-background);
+  border: 1px solid #a6adc1;
+  margin-top: 5px;
 }
 .bloodTypeFilter legend {
   text-align: center;
+  background-color: #a6adc1;
+  padding: 5px 10px;
+  border-radius: 8px;
 }
+
 .bloodTypeFilter-checkBox {
   display: flex;
   flex-direction: row;
+}
+
+.bloodTypeFilter-checkAll,
+.bloodTypeFilter-member {
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  outline: 1px solid blacks;
+  outline-offset: -2px;
+
+  cursor: pointer;
 }

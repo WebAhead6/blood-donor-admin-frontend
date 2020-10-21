@@ -7,36 +7,36 @@
   color: black;
 
   margin-top: 20px;
-  border-style: solid;
-  box-shadow: 2px 2px;
-
+  box-shadow: 0px 0px 5px black;
+  border-radius: 8px;
 }
-.aditEntryBar-addBtn,
-.aditEntryBar-saveBtn,
-.aditEntryBar-deleteBtn {
-  background-color: #048a81;
+.aditEntryBar-addBtn {
+  background-color: var(--color-blue);
   width: 70px;
   height: 100%;
   color: aliceblue;
+  border-radius: 8px;
 }
 .aditEntryBar-btns {
   height: 100%;
   border: none;
 
   min-width: fit-content;
-
 }
-.aditEntryBar-cancelBtn {
-  background-color: #c9b747;
+.aditEntryBar-cancelBtn,
+.aditEntryBar-saveBtn {
+  background-color: var(--color-grey);
   width: 70px;
   height: 100%;
   color: aliceblue;
+  border-radius: 8px;
 }
 .aditEntryBar-deleteBtn {
-  background-color: red;
+  background-color: var(--color-red);
   width: 70px;
   height: 100%;
   color: aliceblue;
+  border-radius: 8px;
 }
 
 .aditEntryBar-title {
@@ -45,4 +45,3 @@
   display: flex;
   align-items: center;
 }
-

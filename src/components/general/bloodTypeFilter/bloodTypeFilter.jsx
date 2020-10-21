@@ -30,17 +30,19 @@ function BloodTypeFilter({
       <fieldset>
         <legend>blood type filter</legend>
 
-        <label>
+        <div>
           <input
+            className="bloodTypeFilter-member"
             type="checkbox"
             checked={member}
             onChange={(e) => handleMemberChange(e.target.value == "true")}
           />
-          member
-        </label>
+          Member
+        </div>
 
         <label>
           <input
+            className="bloodTypeFilter-checkAll"
             type="checkbox"
             checked={options.length === valueArray.length}
             onChange={(e) => handleCheckAll(e.target.value === "true")}

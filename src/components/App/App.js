@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 // import constants
 import { routes } from "../../constants";
 //general import
@@ -17,6 +17,7 @@ import GeneralSettingScreen from "../screens/generalSettingScreen";
 import { useRecoilState } from "recoil";
 import { isLoggedInAtom } from "../../recoilsState";
 import { isLoggedIn as checkLogin } from "../../utils/login";
+import { logOut } from "../../utils/login";
 
 import "./App.css";
 
@@ -46,37 +47,53 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Switch>
-        <Route exact path={routes.home}>
-          <HomeScreen />
-        </Route>
+      <main className="App-content">
+        <Switch>
+          <Route exact path={routes.home}>
+            <HomeScreen />
+          </Route>
 
-        <Route exact path={routes.alertScreen}>
-          <AlertScreen />
-        </Route>
+          <Route exact path={routes.alertScreen}>
+            <AlertScreen />
+          </Route>
 
-        <Route exact path={routes.ChangePassowrdScreen}>
-          <ChangePassowrdScreen />
-        </Route>
+          <Route exact path={routes.ChangePassowrdScreen}>
+            <ChangePassowrdScreen />
+          </Route>
 
-        <Route exact path={routes.GoalsScreen}>
-          <GoalsScreen />
-        </Route>
+          <Route exact path={routes.GoalsScreen}>
+            <GoalsScreen />
+          </Route>
 
-        <Route exact path={routes.HomeMenuScreen}>
-          <HomeMenuScreen />
-        </Route>
+          <Route exact path={routes.HomeMenuScreen}>
+            <HomeMenuScreen />
+          </Route>
 
-        <Route exact path={routes.LocationsScreen}>
-          <LocationsScreen />
-        </Route>
+          <Route exact path={routes.LocationsScreen}>
+            <LocationsScreen />
+          </Route>
 
-        <Route exact path={routes.GeneralSettingScreen}>
-          <GeneralSettingScreen />
-        </Route>
-      </Switch>
+          <Route exact path={routes.GeneralSettingScreen}>
+            <GeneralSettingScreen />
+          </Route>
+          <Route exact path={routes.Logout} component={Logout} />
+        </Switch>
+      </main>
     </div>
   );
+}
+function Logout() {
+  const history = useHistory();
+
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInAtom);
+
+  React.useEffect(() => {
+    logOut().then(() => {
+      history.push(routes.LoginScreen);
+      setIsLoggedIn(false);
+    });
+  });
+  return <> </>;
 }
 
 export default App;
