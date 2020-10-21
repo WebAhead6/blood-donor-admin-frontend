@@ -9,7 +9,13 @@ import {
   getGeneralSettingData,
 } from "../../../utils/generalSetting";
 
-function GeneralSettingEntryContainer({ id, textArray, context, contextType }) {
+function GeneralSettingEntryContainer({
+  id,
+  textArray,
+  context,
+  contextType,
+  indexOrder,
+}) {
   const [isEdit, setIsEdit] = React.useState(true);
 
   const [canEdit, setCanEdit] = React.useState(false);
@@ -20,6 +26,7 @@ function GeneralSettingEntryContainer({ id, textArray, context, contextType }) {
     textArray,
     context,
     contextType,
+    indexOrder,
   });
 
   const handleSave = async (e) => {
@@ -38,7 +45,7 @@ function GeneralSettingEntryContainer({ id, textArray, context, contextType }) {
     setGetGeneralSetting(data);
   };
   const handleCancel = async () => {
-    setLocalState({ textArray, context, contextType });
+    setLocalState({ textArray, context, contextType, indexOrder });
     setIsEdit(true);
 
     setCanEdit(false);
