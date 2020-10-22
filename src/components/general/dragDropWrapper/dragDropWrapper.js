@@ -8,9 +8,7 @@ export default function DragDropWrapper({ children, onDragEnd }) {
         {(provided, snapshot) => (
           <div
           ref={provided.innerRef}
-            style={{
-              backgroundColor: snapshot.isDraggingOver ? "blue" : "grey",
-            }}
+          
             {...provided.droppableProps}
           >
 

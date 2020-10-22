@@ -2,18 +2,36 @@
   --color-navy: #314e71;
   --color-white: white;
   --color-gray-lite: #e8e8e8;
-  --color-drop-orange: #cdaa53;
+  --color-save: #1d886d;
   --color-blue: #8395aa;
   --color-grey: #6b7f82;
   --color-red: #c42126;
 
   --color-drop-red: #921616;
-
-  --color-entry-background: #d9d8d4;
+  /* --color-entry-background: #d9d8d4; */
+  --color-entry-background: #f1f1e6;
 
   --color-gray: #f5f5f5;
   --color-tranparent-green: rgba(70, 255, 70, 0.5);
   --color-transparent-gray: rgba(255, 255, 255, 0.4);
+
+  --color-button-add:#1D886D ;
+  --color-button-save:#1D886D ;
+  --color-button-cancel:#314E71 ;
+  --color-button-delete: #793B21;
+  --color-button-edit:  #314E71 ;
+
+  --color-add-bar: #314E71;
+  --color-edit-bar:  #A46E7D;
+
+  --color-felds: #e8e8e8;
+
+  --navbar-color: #314e71;
+  --navbar-button-defult: ;
+  --navbar-button-selected: ;
+
+  --background-color-title-legend:white ;
+  --border-color: 1px solid #a6adc1;
 
   font-family: Arial, Helvetica, sans-serif;
 }

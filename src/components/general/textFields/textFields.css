@@ -1,20 +1,21 @@
 .textFields-input {
   width: 100%;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .textFields fieldset {
-  background-color: var(--color-entry-background);
-  border: 1px solid #a6adc1;
+  background-color: var( --color-felds);
+  border: var( --border-color);
   margin-top: 5px;
 }
 
 .textFields legend {
   text-align: center;
-  background-color: #a6adc1;
+  background-color:var(--background-color-title-legend);
+  border: var( --border-color) ;
   /* color: white; */
   padding: 5px 10px;
-  border-radius: 8px;
+  border-radius: px;
 }
 
 .preventEdit {
