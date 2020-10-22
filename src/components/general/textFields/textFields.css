@@ -11,11 +11,8 @@
 
 .textFields legend {
   text-align: center;
-  background-color:var(--background-color-title-legend);
-  border: var( --border-color) ;
   /* color: white; */
   padding: 5px 10px;
-  border-radius: px;
 }
 
 .preventEdit {

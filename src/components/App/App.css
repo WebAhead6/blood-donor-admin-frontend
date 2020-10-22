@@ -17,3 +17,7 @@
 .App-content {
   overflow-y: scroll;
 }
+
+.content-container{
+  background-color: #E8E8E8;
+}
