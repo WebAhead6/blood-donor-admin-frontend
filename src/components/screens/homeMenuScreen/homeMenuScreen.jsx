@@ -86,8 +86,10 @@ function HomeMenuScreen() {
               {(provided) => (
                 <div
                   ref={provided.innerRef}
+                  
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
+               
                 >
                   <HomeMenuItemContainer
                     redirectionLink={redirectionLink}

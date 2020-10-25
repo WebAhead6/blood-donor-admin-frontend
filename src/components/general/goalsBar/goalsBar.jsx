@@ -41,7 +41,7 @@ const GoalsBar = function() {
   };
 
   return (
-    <div className="goals_form_container">
+    <div className="goals_form_container ">
       <div className="goals_form_title">
         <span>Goal</span>
       </div>

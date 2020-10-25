@@ -49,7 +49,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
     setIsOpen(!isOpen);
   };
   return (
-    <form onSubmit={handleSave}>
+    <form onSubmit={handleSave} className="content-container">
       <EditEntryBar
         isEdit={isEdit}
         onEditClick={handleEdit}
@@ -59,7 +59,7 @@ function AlertEntryContainer({ id, textArray, bloodType, addedDate, member }) {
         onInputClick={handleBarClick}
       />
       {isOpen ? (
-        <AlertEntryContent
+        <AlertEntryContent 
           textArray={localState.textArray}
           addedDate={localState.addedDate}
           bloodType={localState.bloodType}

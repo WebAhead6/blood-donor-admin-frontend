@@ -64,7 +64,7 @@ function AlertScreen() {
         )}
       </form>
       {getAlert.map(({ textArray, bloodType = [], id, addedDate, member }) => (
-        <AlertEntryContainer
+        <AlertEntryContainer 
           key={id}
           id={id}
           member={member}

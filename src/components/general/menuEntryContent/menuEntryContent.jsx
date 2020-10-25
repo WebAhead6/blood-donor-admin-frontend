@@ -23,7 +23,7 @@ function MenuEntryContent({
 
 
   return (
-    <div className="menuEntryContent">
+    <div className="menuEntryContent" className= "content-container" >
       <RedirectionLink
         canEdit={canEdit}
         redirectionLink={redirectionLink}

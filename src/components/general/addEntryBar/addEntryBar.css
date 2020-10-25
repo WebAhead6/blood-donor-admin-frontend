@@ -1,5 +1,5 @@
 .addEntryBar-container {
-  background-color: #384373;
+  background-color: var(--color-add-bar);
   padding-left: 5px;
   height: 40px;
   display: flex;
@@ -7,14 +7,13 @@
   align-items: center;
   color: aliceblue;
 
-  border-radius: 8px;
+  border-radius: 2px;
 }
 .addEntryBar-addBtn {
-  background-color: var(--color-blue);
+  background-color: var( --color-button-add);
   width: 70px;
   height: 100%;
   color: aliceblue;
-  border-radius: 8px;
 }
 .addEntryBar-btns {
   height: 100%;
@@ -22,16 +21,14 @@
 }
 
 .addEntryBar-saveBtn {
-  background-color: var(--color-grey);
+  background-color: var(--color-button-save);
   width: 70px;
   height: 100%;
   color: aliceblue;
-  border-radius: 8px;
 }
 .addEntryBar-cancelBtn {
-  background-color: var(--color-red);
+  background-color: var(--color-button-cancel);
   width: 70px;
   height: 100%;
   color: aliceblue;
-  border-radius: 8px;
 }

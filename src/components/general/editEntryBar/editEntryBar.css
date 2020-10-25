@@ -5,38 +5,46 @@
   justify-content: space-between;
   align-items: center;
   color: black;
+  background-color:var(--color-edit-bar);
 
   margin-top: 20px;
-  box-shadow: 0px 0px 5px black;
-  border-radius: 8px;
+  box-shadow: 0px 0px 2px 0px #314e71;
+
 }
-.aditEntryBar-addBtn {
-  background-color: var(--color-blue);
-  width: 70px;
-  height: 100%;
-  color: aliceblue;
-  border-radius: 8px;
-}
+
 .aditEntryBar-btns {
   height: 100%;
   border: none;
 
   min-width: fit-content;
 }
-.aditEntryBar-cancelBtn,
-.aditEntryBar-saveBtn {
-  background-color: var(--color-grey);
+.aditEntryBar-addBtn{
+  background-color:var(--color-button-edit);
   width: 70px;
   height: 100%;
   color: aliceblue;
-  border-radius: 8px;
+
+}
+
+.aditEntryBar-cancelBtn {
+  background-color:var(--color-button-cancel);
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
+}
+
+
+.aditEntryBar-saveBtn {
+  background-color: var(--color-button-save);
+  width: 70px;
+  height: 100%;
+  color: aliceblue;
 }
 .aditEntryBar-deleteBtn {
-  background-color: var(--color-red);
+  background-color: var(--color-button-delete);
   width: 70px;
   height: 100%;
   color: aliceblue;
-  border-radius: 8px;
 }
 
 .aditEntryBar-title {
