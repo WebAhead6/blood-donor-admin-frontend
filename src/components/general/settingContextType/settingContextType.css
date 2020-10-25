@@ -1,6 +1,10 @@
 .settingContextType {
-  background-color: var(--color-entry-background);
+  background-color: var(--color-felds);
   border: 1px solid #a6adc1;
 
   margin-top: 5px;
+}
+
+.settingContextType p {
+  margin-left: 5px;
 }

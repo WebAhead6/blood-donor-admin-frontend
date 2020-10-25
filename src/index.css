@@ -15,14 +15,17 @@
   --color-tranparent-green: rgba(70, 255, 70, 0.5);
   --color-transparent-gray: rgba(255, 255, 255, 0.4);
 
-  --color-button-add:#1D886D ;
-  --color-button-save:#1D886D ;
-  --color-button-cancel:#314E71 ;
-  --color-button-delete: #793B21;
-  --color-button-edit:  #314E71 ;
+  --color-button-add: #1d886d;
+  --color-button-save: #1d886d;
+  --color-button-cancel: #314e71;
+  --color-button-delete: #793b21;
+  --color-button-edit: #314e71;
 
-  --color-add-bar: #314E71;
-  --color-edit-bar:  #A46E7D;
+  --color-add-bar: #314e71;
+  --color-edit-bar: #a46e7d;
+  --color-location-button: #a46e7d;
+  --color-upload-button: #314e71;
+  --color-download-button: #1d886d;
 
   --color-felds: #e8e8e8;
 
@@ -30,7 +33,7 @@
   --navbar-button-defult: ;
   --navbar-button-selected: ;
 
-  --background-color-title-legend:white ;
+  --background-color-title-legend: white;
   --border-color: 1px solid #a6adc1;
 
   font-family: Arial, Helvetica, sans-serif;

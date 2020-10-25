@@ -14,14 +14,19 @@ function FileContextType({ onContextChange, context, canEdit }) {
     <div className="fileContextType">
       {context && (
         <a href={context} download="file.pdf">
-          <input type="button" value="download file" />
+          <input
+            type="button"
+            value="download"
+            className="fileContextType-downloadFile"
+          />
         </a>
       )}
       {canEdit ? (
         <>
           <input
+            className="fileContextType-uploadFile"
             type="button"
-            value="upload file"
+            value="upload"
             onClick={handleUploadClick}
           />
           <input

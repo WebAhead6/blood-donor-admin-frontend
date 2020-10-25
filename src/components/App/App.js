@@ -50,7 +50,7 @@ function App() {
       <main className="App-content">
         <Switch>
           <Route exact path={routes.home}>
-            <HomeScreen />
+            <AlertScreen />
           </Route>
 
           <Route exact path={routes.alertScreen}>
