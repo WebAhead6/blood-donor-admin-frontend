@@ -52,7 +52,7 @@ function HomeMenuScreen() {
       result?.source?.index,
       result?.destination?.index
     );
-    console.log(items);
+
     const orderItem = items.map(({ id }) => id);
     setGetMenuItem(items);
     await reorderItem(orderItem);
@@ -86,10 +86,8 @@ function HomeMenuScreen() {
               {(provided) => (
                 <div
                   ref={provided.innerRef}
-                  
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
-               
                 >
                   <HomeMenuItemContainer
                     redirectionLink={redirectionLink}

@@ -8,22 +8,21 @@ function MenuEntryContent({
   setData,
   canEdit,
   redirectionLink,
+  indexOrder,
 }) {
   const onTitleChange = (index, value) => {
     const arrClone = [...textArray];
     const changedData = { ...textArray[index], title: value };
     arrClone[index] = changedData;
 
-    setData({redirectionLink, textArray: arrClone });
+    setData({ redirectionLink, indexOrder, textArray: arrClone });
   };
   const onredirectionLinkChange = (value) => {
-    setData({textArray, redirectionLink: value });
+    setData({ textArray, indexOrder, redirectionLink: value });
   };
 
-
-
   return (
-    <div className="menuEntryContent" className= "content-container" >
+    <div className="menuEntryContent" className="content-container">
       <RedirectionLink
         canEdit={canEdit}
         redirectionLink={redirectionLink}
